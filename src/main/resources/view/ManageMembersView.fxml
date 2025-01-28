@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="memberBody" prefHeight="553.0" prefWidth="1059.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.gdse.libarymanagementsystem.controller.ManageMemberViewContro">
+   <children>
+      <Label layoutX="16.0" layoutY="21.0" onMouseClicked="#goToHomePage" text="&lt;">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="21.0" text="Manage members">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <TableView fx:id="memberTable" layoutX="14.0" layoutY="55.0" onMouseClicked="#onClick" prefHeight="487.0" prefWidth="676.0">
+        <columns>
+          <TableColumn fx:id="memId" prefWidth="87.99999713897705" text="Member ID" />
+          <TableColumn fx:id="memName" prefWidth="141.60000610351562" text="Name" />
+            <TableColumn fx:id="memAddress" prefWidth="132.00001525878906" text="Address" />
+            <TableColumn fx:id="memEmail" minWidth="0.0" prefWidth="161.5999755859375" text="Email" />
+            <TableColumn fx:id="memContact" prefWidth="152.79998779296875" text="Contact no" />
+        </columns>
+      </TableView>
+      <AnchorPane layoutX="700.0" layoutY="16.0" prefHeight="515.0" prefWidth="341.0" style="-fx-background-color: #c9cbcd;">
+         <children>
+            <Label layoutX="31.0" layoutY="58.0" text="Member ID">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblMemId" layoutX="115.0" layoutY="58.0" text="M001">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="101.0" text="Name">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtMemName" layoutX="93.0" layoutY="99.0" prefHeight="26.0" prefWidth="214.0" />
+            <Label layoutX="31.0" layoutY="151.0" text="Address">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtMemAddress" layoutX="93.0" layoutY="149.0" prefHeight="26.0" prefWidth="214.0" />
+            <Label layoutX="31.0" layoutY="202.0" text="Email">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtMemEmail" layoutX="93.0" layoutY="200.0" prefHeight="26.0" prefWidth="214.0" />
+            <Label layoutX="31.0" layoutY="248.0" text="Contact">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtMemContact" layoutX="93.0" layoutY="246.0" prefHeight="26.0" prefWidth="214.0" />
+            <Button fx:id="btnDelete" disable="true" layoutX="34.0" layoutY="297.0" mnemonicParsing="false" onAction="#deleteMem" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #b30000;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnUpdate" disable="true" layoutX="135.0" layoutY="297.0" mnemonicParsing="false" onAction="#updateMem" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #003f5c;" text="Update" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSave" layoutX="224.0" layoutY="297.0" mnemonicParsing="false" onAction="#save" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #2a6f5b;" text="Save" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnRestart" disable="true" layoutX="34.0" layoutY="329.0" mnemonicParsing="false" onAction="#reset" prefHeight="26.0" prefWidth="275.0" style="-fx-background-color: #acacac;" text="Reset" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8b8c8f" height="83.0" layoutX="25.0" layoutY="373.0" stroke="#9c9c9c00" strokeType="INSIDE" width="293.0" />
+            <Button fx:id="btnGetAllReports" layoutX="34.0" layoutY="383.0" mnemonicParsing="false" onAction="#getAllReports" prefHeight="26.0" prefWidth="275.0" style="-fx-background-color: #627398;" text="Genarate All Member's Details" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnGetMemDetails" disable="true" layoutX="34.0" layoutY="415.0" mnemonicParsing="false" onAction="#getMemDetails" prefHeight="26.0" prefWidth="139.0" style="-fx-background-color: #627398;" text="Get Member Report" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnGetMemActivityReport" disable="true" layoutX="177.0" layoutY="415.0" mnemonicParsing="false" onAction="#getMemActivityReport" prefHeight="26.0" prefWidth="132.0" style="-fx-background-color: #627398;" text="Member Activity Report" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

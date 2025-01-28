@@ -1,0 +1,151 @@
+<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
+<jasperReport name="AllMembersDetailsReport" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f42ca3fd-5033-4d47-9864-61c46e4051c1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="AllMemberDetailsReport"/>
+	<query language="SQL"><![CDATA[select * from Member;]]></query>
+	<field name="Member_Id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Member_Id"/>
+		<property name="com.jaspersoft.studio.field.label" value="Member_Id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member"/>
+	</field>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member"/>
+	</field>
+	<field name="adress" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="adress"/>
+		<property name="com.jaspersoft.studio.field.label" value="adress"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member"/>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email"/>
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member"/>
+	</field>
+	<field name="contact_No" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="contact_No"/>
+		<property name="com.jaspersoft.studio.field.label" value="contact_No"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member"/>
+	</field>
+	<variable name="Member_Id1" resetType="Page" calculation="Count" class="java.lang.Integer">
+		<expression><![CDATA[$F{Member_Id}]]></expression>
+	</variable>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="staticText" uuid="ea1a953c-cfe6-4822-85c3-64e80b6f845d" x="73" y="40" width="205" height="15">
+			<text><![CDATA[Bandaragama Rd, Bandaragama. 12530]]></text>
+		</element>
+		<element kind="staticText" uuid="e174b27e-5467-48f0-85fe-745cff3bd1c2" x="73" y="25" width="205" height="15">
+			<text><![CDATA[Public Library]]></text>
+		</element>
+		<element kind="staticText" uuid="b965b3d4-2ef2-486d-a2e0-0131244c5ba3" x="73" y="55" width="205" height="15">
+			<text><![CDATA[Contact :  0382 289 975]]></text>
+		</element>
+		<element kind="staticText" uuid="f2c15294-0692-4228-97ac-b85b5132aae4" x="73" y="0" width="210" height="25" fontSize="19.0" bold="true">
+			<text><![CDATA[GnanaPradeepa]]></text>
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+	</title>
+	<pageHeader height="43">
+		<element kind="staticText" uuid="aa5cc680-ceaa-4d58-b7aa-7b8176a18773" x="0" y="0" width="555" height="35" fontName="Poppins Medium" fontSize="18.0" bold="true" underline="false" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[All Member Details Report]]></text>
+			<box>
+				<pen lineWidth="0.25" lineStyle="Dashed"/>
+			</box>
+		</element>
+	</pageHeader>
+	<columnHeader height="30" splitType="Stretch">
+		<element kind="staticText" uuid="751a7a3f-63d8-4e22-bfe7-57c37f2a9411" x="0" y="0" width="111" height="30" fontName="Poppins SemiBold" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Member_Id]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="45407142-3d56-4947-b1e6-a6e32279d4c9"/>
+			<box>
+				<pen lineWidth="1.25"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="789e03c5-84b7-4fc7-bd7c-cea9eb434dbf" x="111" y="0" width="111" height="30" fontName="Poppins SemiBold" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[name]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c45d68f5-fd65-4814-ba0f-c57c180a64eb"/>
+			<box>
+				<pen lineWidth="1.25"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="6c31fe1b-ad27-4aa5-876a-e5844e535e97" x="222" y="0" width="111" height="30" fontName="Poppins SemiBold" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[adress]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c07aa40d-1be9-45d4-9f37-eafaab414214"/>
+			<box>
+				<pen lineWidth="1.25"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="49fe497f-eb4d-49f3-8f71-e557cca971a2" x="333" y="0" width="111" height="30" fontName="Poppins SemiBold" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[email]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5934fc15-5070-449c-8bc8-82c3c7f8d013"/>
+			<box>
+				<pen lineWidth="1.25"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="07963027-fb77-4daf-90ea-cc3568bd2cf5" x="444" y="0" width="111" height="30" fontName="Poppins SemiBold" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[contact_No]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e15804d4-236c-4a88-b6c1-0240ff05bcae"/>
+			<box>
+				<pen lineWidth="1.25"/>
+			</box>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<element kind="textField" uuid="7b48df75-5a88-446d-8c6e-d87bff0525a1" x="0" y="0" width="111" height="30" fontName="Poppins" fontSize="9.0" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{Member_Id}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="45407142-3d56-4947-b1e6-a6e32279d4c9"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="3fb0b0b7-ec1a-4039-91f3-b16f3084b8c8" x="111" y="0" width="111" height="30" fontName="Poppins" fontSize="9.0" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{name}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c45d68f5-fd65-4814-ba0f-c57c180a64eb"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="6f882ebd-9d93-4eac-841b-252706ee220c" x="222" y="0" width="111" height="30" fontName="Poppins" fontSize="9.0" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{adress}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c07aa40d-1be9-45d4-9f37-eafaab414214"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="cc6694d2-1e21-4052-932c-0242d1616569" x="333" y="0" width="111" height="30" fontName="Poppins" fontSize="9.0" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{email}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5934fc15-5070-449c-8bc8-82c3c7f8d013"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="74ab1aef-860f-4d16-8e5b-a50620242044" x="444" y="0" width="111" height="30" fontName="Poppins" fontSize="9.0" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{contact_No}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e15804d4-236c-4a88-b6c1-0240ff05bcae"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="5" splitType="Stretch"/>
+	<lastPageFooter height="30">
+		<element kind="staticText" uuid="3e86fa87-410d-4af2-b438-0f7c2f2f88d9" x="0" y="0" width="120" height="30" fontName="Poppins SemiBold" bold="false" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Total Member Count :]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="45407142-3d56-4947-b1e6-a6e32279d4c9"/>
+			<box>
+				<pen lineWidth="0.75"/>
+			</box>
+		</element>
+		<element kind="textField" uuid="8db27dbf-6c8e-4fdc-8501-417007746029" x="120" y="0" width="60" height="30" hTextAlign="Center" vTextAlign="Middle">
+			<expression><![CDATA[$V{Member_Id1}]]></expression>
+			<box>
+				<pen lineWidth="0.75"/>
+			</box>
+		</element>
+	</lastPageFooter>
+</jasperReport>
