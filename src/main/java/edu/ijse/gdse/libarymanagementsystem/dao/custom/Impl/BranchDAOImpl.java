@@ -1,6 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.dao.custom.Impl;
 
 import edu.ijse.gdse.libarymanagementsystem.dao.custom.BranchDAO;
+import edu.ijse.gdse.libarymanagementsystem.entity.Branch;
 import edu.ijse.gdse.libarymanagementsystem.util.CrudUtil;
 
 import java.sql.ResultSet;
@@ -9,9 +10,9 @@ import java.util.ArrayList;
 
 public class BranchDAOImpl implements BranchDAO {
 
+    //HERE GET ALL BRANCH IDS
     @Override
     public ArrayList<String> getAllBranchIds(){
-        //HERE GET ALL BRANCH IDS
         try{
             String sql = "select Branch_Id from Branch";
             ResultSet res = CrudUtil.execute(sql);
@@ -33,6 +34,7 @@ public class BranchDAOImpl implements BranchDAO {
         return null;
     }
 
+    //HERE GET THE SELECTED BRANCHES NAME
     @Override
     public String getSelectedBranchName(String branchId) {
         try{

@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @ToString
 
-public class BookDto {
+public class Book {
     private String bookId;
     private String name;
     private int qty;

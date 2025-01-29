@@ -1,11 +1,12 @@
 package edu.ijse.gdse.libarymanagementsystem.entity;
 import lombok.*;
-@NoArgsConstructor
+
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @ToString
-public class CategoryDto {
-    private String categoryId;
+public class MemberIssues {
     private String name;
+    private int totalIssues;
 }

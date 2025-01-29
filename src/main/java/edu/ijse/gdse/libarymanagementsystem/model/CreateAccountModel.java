@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class CreateAccountModel{
-    public String saveUser(UserDto dto, String branchID) throws SQLException,ClassNotFoundException{
+    public boolean saveUser(UserDto dto, String branchID) throws SQLException,ClassNotFoundException{
         String sql = "Insert Into User Values (?,?,?,?,?,?)";
         boolean res = CrudUtil.execute(
                 sql,
@@ -22,7 +22,7 @@ public class CreateAccountModel{
                 dto.getPassword(),
                 dto.getEmail()
         );
-        return res == true? "Added Successfully" : "Added Failed";
+        return res;
     }
 
     public String genarateId() throws SQLException, ClassNotFoundException {

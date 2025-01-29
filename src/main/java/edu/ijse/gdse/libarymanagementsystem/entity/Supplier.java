@@ -2,13 +2,13 @@ package edu.ijse.gdse.libarymanagementsystem.entity;
 import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
 @Getter
+@Setter
 @ToString
-public class AuthorDto {
-    private String auhorId;
+public class Supplier {
+    private String supplierId;
     private String name;
+    private String contact;
+    private String address;
     private String Email;
-    private String Address;
-    private String contract;
 }

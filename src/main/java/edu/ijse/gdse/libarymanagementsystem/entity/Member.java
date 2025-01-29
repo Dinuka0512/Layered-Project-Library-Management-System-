@@ -1,12 +1,14 @@
 package edu.ijse.gdse.libarymanagementsystem.entity;
 import lombok.*;
-
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @ToString
 public class Member {
+    private String memberId;
     private String name;
-    private int totalIssues;
+    private String address;
+    private String email;
+    private String contact;
 }

@@ -6,7 +6,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class IssueTableDto {
+public class IssueTable {
     private String issueId;
     private String memId;
     private String UserId;

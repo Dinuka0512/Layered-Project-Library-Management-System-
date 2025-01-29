@@ -1,11 +1,14 @@
 package edu.ijse.gdse.libarymanagementsystem.entity;
+
 import lombok.*;
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @ToString
-public class SectionDto {
-    private String Section_Id;
+public class Branch {
+    private String branchId;
     private String name;
+    private String location;
 }

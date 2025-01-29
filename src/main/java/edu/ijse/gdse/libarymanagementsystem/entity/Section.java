@@ -5,8 +5,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class BookshelfDto {
-    private String bookshelfId;
-    private String location;
-    private String sectionId;
+public class Section {
+    private String Section_Id;
+    private String name;
 }

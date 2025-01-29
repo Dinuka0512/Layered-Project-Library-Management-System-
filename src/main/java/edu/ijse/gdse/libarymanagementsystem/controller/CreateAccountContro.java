@@ -2,6 +2,7 @@ package edu.ijse.gdse.libarymanagementsystem.controller;
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.BranchBO;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.UserBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.UserDto;
 import edu.ijse.gdse.libarymanagementsystem.model.BranchModel;
 import edu.ijse.gdse.libarymanagementsystem.model.CreateAccountModel;
@@ -75,11 +76,12 @@ public class CreateAccountContro implements Initializable {
     @FXML
     private Label lblBranchName;
 
-    //HEAR LOADING THE BRANCH IDS
+    //ACCESS THE BOImpl
     private BranchBO branchBO = (BranchBO) BOFactory.getInstance().getBO(BOFactory.BOType.BRANCH);
+    private UserBO userBo = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
 
+    //HERE LOAD THE ALL BRANCHES IDS
     private void loardBranchIds() throws ClassNotFoundException, SQLException{
-
         ArrayList<String> branchIds = branchBO.getAllBranchIds();
         ObservableList<String> observableBranchIds = FXCollections.observableArrayList(branchIds);
         comboBoxBranchId.setItems(observableBranchIds);
@@ -96,6 +98,7 @@ public class CreateAccountContro implements Initializable {
     }
 
 
+    //BEFORE CREATE THE ACCOUNT THERE VALIDATE THE ACCOUNT INFO
     @FXML
     void createAccount(ActionEvent event) throws ClassNotFoundException, SQLException {
         if(comboBoxBranchId.getValue() == null){
@@ -153,6 +156,7 @@ public class CreateAccountContro implements Initializable {
         }
     }
 
+    //HERE SAVE THE NEW USER
     private void saveNewUser(){
         UserDto dto = new UserDto(
              labelUserId.getText(),
@@ -163,9 +167,9 @@ public class CreateAccountContro implements Initializable {
         );
 
         try{
-            String resp = cAccountModel.saveUser(dto, comboBoxBranchId.getValue());
-            new Alert(Alert.AlertType.INFORMATION,resp).show();
-                if(resp.equals("Added Successfully")){
+            boolean resp = userBo.saveUser(dto, comboBoxBranchId.getValue());
+                if(resp){
+                    new Alert(Alert.AlertType.INFORMATION,"Added Successfully").show();
                     clearText();
                     Stage stage = (Stage) body.getScene().getWindow();
                     stage.close();

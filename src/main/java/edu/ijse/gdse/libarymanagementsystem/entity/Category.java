@@ -5,8 +5,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class BookSuplyDto {
-    private String book_Id;
-    private String supplier_Id;
-    private int qty;
+public class Category {
+    private String categoryId;
+    private String name;
 }

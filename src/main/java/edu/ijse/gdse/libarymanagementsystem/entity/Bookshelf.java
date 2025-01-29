@@ -2,10 +2,11 @@ package edu.ijse.gdse.libarymanagementsystem.entity;
 import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
 @Getter
+@Setter
 @ToString
-public class BookSupplyNameAndQtyDto {
-    private String SupplierName;
-    private int qty;
+public class Bookshelf {
+    private String bookshelfId;
+    private String location;
+    private String sectionId;
 }

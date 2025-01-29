@@ -5,10 +5,11 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class UserDto {
+public class User {
     private String userId;
     private String name;
     private String address;
     private String password;
     private String email;
+    private String BranchId;
 }
