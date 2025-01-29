@@ -40,9 +40,6 @@ public class CreateAccountContro implements Initializable {
         }
     }
 
-    //Tight Couple
-    private final CreateAccountModel cAccountModel = new CreateAccountModel();
-
     @FXML
     private Button btnCreate;
 
@@ -80,7 +77,7 @@ public class CreateAccountContro implements Initializable {
     private BranchBO branchBO = (BranchBO) BOFactory.getInstance().getBO(BOFactory.BOType.BRANCH);
     private UserBO userBo = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
 
-    //HERE LOAD THE ALL BRANCHES IDS
+    //HERE LOAD THE ALL BRANCHES IDS-> DONE
     private void loardBranchIds() throws ClassNotFoundException, SQLException{
         ArrayList<String> branchIds = branchBO.getAllBranchIds();
         ObservableList<String> observableBranchIds = FXCollections.observableArrayList(branchIds);
@@ -88,7 +85,7 @@ public class CreateAccountContro implements Initializable {
     }
 
 
-    //HERE WE GET THE NAME WHAT WE HAVE SELECTED ID ON COMBOBOX
+    //HERE WE GET THE NAME WHAT WE HAVE SELECTED ID ON COMBOBOX-> Done
     @FXML
     void getselectedBranch(ActionEvent event) throws SQLException, ClassNotFoundException {
         if(comboBoxBranchId.getValue() != null){
@@ -116,7 +113,7 @@ public class CreateAccountContro implements Initializable {
                 if(cityNameValidation && !txtAddress.getText().equals(null)){
                     //CHECK THE CITY ADDRESS AND IS IT VALID NAME
 
-                    if(cAccountModel.isUniqueEmail(txtEmail.getText()) && !txtEmail.getText().equals(null)){
+                    if(userBo.isUniqueEmail(txtEmail.getText()) && !txtEmail.getText().equals(null)){
                         //UNIQUE EMAIL
 
 //                        boolean isValidEmail = txtEmail.getText().matches(".+\\@.+\\..+");
@@ -180,9 +177,10 @@ public class CreateAccountContro implements Initializable {
         }
     }
 
+    //HERE GENERATING THE USER ID
     private void genarateId(){
         try{
-            String id = cAccountModel.genarateId();
+            String id = userBo.genarateId();
             labelUserId.setText(id);
         }
         catch (Exception e1){

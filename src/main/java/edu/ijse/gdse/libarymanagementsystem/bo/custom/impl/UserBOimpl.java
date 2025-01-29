@@ -17,4 +17,14 @@ public class UserBOimpl implements UserBO {
     public boolean saveUser(UserDto dto, String branchID) throws ClassNotFoundException, SQLException {
         return userDAO.save(new User(dto.getUserId(),dto.getName(),dto.getAddress(),dto.getPassword(),dto.getEmail(),branchID));
     }
+
+    @Override
+    public String genarateId() throws SQLException, ClassNotFoundException {
+        return userDAO.generateNewId();
+    }
+
+    @Override
+    public boolean isUniqueEmail(String email) throws SQLException, ClassNotFoundException {
+        return userDAO.isUniqueEmail(email);
+    }
 }
