@@ -96,6 +96,7 @@ public class CreateAccountContro implements Initializable {
 
 
     //BEFORE CREATE THE ACCOUNT THERE VALIDATE THE ACCOUNT INFO
+    //CHECK IS UNIQUE EMAIL-> DONE
     @FXML
     void createAccount(ActionEvent event) throws ClassNotFoundException, SQLException {
         if(comboBoxBranchId.getValue() == null){
@@ -153,7 +154,7 @@ public class CreateAccountContro implements Initializable {
         }
     }
 
-    //HERE SAVE THE NEW USER
+    //HERE SAVE THE NEW USER->DONE
     private void saveNewUser(){
         UserDto dto = new UserDto(
              labelUserId.getText(),
@@ -177,7 +178,7 @@ public class CreateAccountContro implements Initializable {
         }
     }
 
-    //HERE GENERATING THE USER ID
+    //HERE GENERATING THE USER ID-> DONE
     private void genarateId(){
         try{
             String id = userBo.genarateId();

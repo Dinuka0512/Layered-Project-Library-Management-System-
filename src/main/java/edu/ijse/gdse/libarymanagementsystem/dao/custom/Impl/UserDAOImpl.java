@@ -1,6 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.dao.custom.Impl;
 
 import edu.ijse.gdse.libarymanagementsystem.dao.custom.UserDAO;
+import edu.ijse.gdse.libarymanagementsystem.dto.UserDto;
 import edu.ijse.gdse.libarymanagementsystem.entity.User;
 import edu.ijse.gdse.libarymanagementsystem.util.CrudUtil;
 
@@ -9,8 +10,27 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UserDAOImpl implements UserDAO {
+    @Override
+    public UserDto getUserDetails(String userEmail) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM user WHERE email = ?";
+
+        ResultSet res = CrudUtil.execute(sql,userEmail);
+        res.next();
+
+        UserDto dto = new UserDto(
+                res.getString("User_Id"),
+                res.getString("name"),
+                res.getString("address"),
+                res.getString("password"),
+                res.getString("email")
+        );
+
+        return dto;
+    }
+
     //USER UNIQUE METHOD
     //HERE CHECK THE
+
     @Override
     public boolean isUniqueEmail(String email) throws SQLException, ClassNotFoundException {
         String sql = "select email from User where email = ?";

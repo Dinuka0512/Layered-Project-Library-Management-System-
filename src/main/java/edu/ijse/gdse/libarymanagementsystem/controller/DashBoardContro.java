@@ -1,5 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
 
+import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.UserBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.UserDto;
 import edu.ijse.gdse.libarymanagementsystem.util.BaseController;
@@ -48,7 +50,7 @@ public class DashBoardContro extends BaseController implements Initializable {
 
 
 
-    private UserModel userModel = new UserModel();
+//    private UserModel userModel = new UserModel();
 
     @Getter
     private static String userEmail;
@@ -108,6 +110,8 @@ public class DashBoardContro extends BaseController implements Initializable {
     //ADD USER --------
     @FXML
     private Button btnAddNewUser;
+
+    private UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
 
     @FXML
     void addNewUser(ActionEvent event) {
@@ -376,7 +380,7 @@ public class DashBoardContro extends BaseController implements Initializable {
 
     public void getUserDetailsAndSetGmail(){
         try{
-            dto = userModel.getUserDetails(userEmail);
+            dto = userBO.getUserDetails(userEmail);
             userGmail.setText(dto.getEmail());
 
             if(userEmail.equals("admin@gmail.com")){

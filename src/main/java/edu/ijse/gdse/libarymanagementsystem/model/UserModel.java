@@ -13,22 +13,6 @@ public class UserModel {
         return res;
     }
 
-    public UserDto getUserDetails(String userEmail) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * FROM user WHERE email = ?";
-
-        ResultSet res = CrudUtil.execute(sql,userEmail);
-        res.next();
-
-        UserDto dto = new UserDto(
-                res.getString("User_Id"),
-                res.getString("name"),
-                res.getString("address"),
-                res.getString("password"),
-                res.getString("email")
-        );
-
-        return dto;
-    }
 
     public String getUserId(String email) {
         try{

@@ -13,6 +13,12 @@ public class UserBOimpl implements UserBO {
     //CREATED INSTANCE
     UserDAO userDAO = (UserDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOType.USER);
 
+
+    @Override
+    public UserDto getUserDetails(String userEmail) throws SQLException, ClassNotFoundException {
+        return userDAO.getUserDetails(userEmail);
+    }
+
     @Override
     public boolean saveUser(UserDto dto, String branchID) throws ClassNotFoundException, SQLException {
         return userDAO.save(new User(dto.getUserId(),dto.getName(),dto.getAddress(),dto.getPassword(),dto.getEmail(),branchID));
