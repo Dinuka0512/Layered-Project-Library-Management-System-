@@ -10,4 +10,5 @@ public interface UserBO extends SuperBO {
     String genarateId() throws SQLException, ClassNotFoundException;
     boolean isUniqueEmail(String email) throws SQLException, ClassNotFoundException;
     UserDto getUserDetails(String userEmail) throws SQLException, ClassNotFoundException;
+    boolean updateUser(UserDto dto) throws SQLException, ClassNotFoundException;
 }

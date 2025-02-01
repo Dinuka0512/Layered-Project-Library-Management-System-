@@ -7,13 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserModel {
-    public boolean updateUser(String userName, String password,String email) throws SQLException, ClassNotFoundException{
-        String sql = "UPDATE user SET name = ? , password = ? WHERE email = ?";
-        boolean res = CrudUtil.execute(sql,userName,password,email);
-        return res;
-    }
-
-
     public String getUserId(String email) {
         try{
             String sql = "select User_Id from user where email = ?";

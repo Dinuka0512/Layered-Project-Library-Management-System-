@@ -5,9 +5,6 @@ import edu.ijse.gdse.libarymanagementsystem.bo.custom.UserBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.UserDto;
 import edu.ijse.gdse.libarymanagementsystem.util.BaseController;
-import edu.ijse.gdse.libarymanagementsystem.model.BookIssueModel;
-import edu.ijse.gdse.libarymanagementsystem.model.BookModel;
-import edu.ijse.gdse.libarymanagementsystem.model.UserModel;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,8 +46,6 @@ public class DashBoardContro extends BaseController implements Initializable {
     //-----
 
 
-
-//    private UserModel userModel = new UserModel();
 
     @Getter
     private static String userEmail;

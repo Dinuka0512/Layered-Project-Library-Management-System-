@@ -20,6 +20,11 @@ public class UserBOimpl implements UserBO {
     }
 
     @Override
+    public boolean updateUser(UserDto dto) throws SQLException, ClassNotFoundException {
+        return userDAO.update(new User(dto.getUserId(),dto.getName(),dto.getAddress(),dto.getPassword(),dto.getEmail(),""));
+    }
+
+    @Override
     public boolean saveUser(UserDto dto, String branchID) throws ClassNotFoundException, SQLException {
         return userDAO.save(new User(dto.getUserId(),dto.getName(),dto.getAddress(),dto.getPassword(),dto.getEmail(),branchID));
     }

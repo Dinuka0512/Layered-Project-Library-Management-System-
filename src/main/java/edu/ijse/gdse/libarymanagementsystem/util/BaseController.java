@@ -18,13 +18,13 @@ import java.io.IOException;
 public class BaseController {
 
     private Timeline inactivityTimer;
-    private static final int INACTIVITY_TIMEOUT = 20;
+    private static final int INACTIVITY_TIMEOUT = 10;
 
     public void initAutoLogout(Scene scene) {
         // Create a Timeline to monitor inactivity
         inactivityTimer = new Timeline(new KeyFrame(Duration.seconds(INACTIVITY_TIMEOUT), event -> {
             // Code to log out the user
-            System.out.println("Account logout for Security system..");
+            System.out.println("AUTO LOGOUT");
             // Forcibly log out the user or navigate to the login screen
             Platform.runLater(() -> {
                 navigateToLoginScreen(scene);
@@ -52,9 +52,12 @@ public class BaseController {
             AnchorPane loginRoot = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
             scene.setRoot(loginRoot);
             Stage stage = (Stage) scene.getWindow();
-            stage.setTitle("Log in");
+            if (stage != null) {
+                stage.setTitle("Log in");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }

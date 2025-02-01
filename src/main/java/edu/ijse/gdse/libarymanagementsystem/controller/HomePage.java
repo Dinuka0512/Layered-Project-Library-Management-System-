@@ -1,5 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
 
+import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.UserBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.Barchart;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.BookIdAndQty;
@@ -40,10 +42,7 @@ public class HomePage implements Initializable {
     @FXML
     private StackedBarChart<String, Number> barchartMember;
 
-    private UserModel userModel = new UserModel();
 
-    @FXML
-    private TextField txtNewUserName;
 
     @FXML
     private AnchorPane workSpace;
@@ -158,7 +157,10 @@ public class HomePage implements Initializable {
     private final IssueModel issueModel = new IssueModel();
     private final ReturnBookModel returnBookModel = new ReturnBookModel();
     private final BookSupplyModel bookSupplyModel = new BookSupplyModel();
+    private UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
 
+    @FXML
+    private TextField txtNewUserName;
     private String date = String.valueOf(LocalDate.now());
 
     @FXML
@@ -318,7 +320,7 @@ public class HomePage implements Initializable {
 
     private void updateUser(){
         try{
-            boolean isUpdated = userModel.updateUser(txtNewUserName.getText(),txtNewPassword.getText(),userDetails.getEmail());
+            boolean isUpdated = userBO.updateUser(new UserDto("",txtNewUserName.getText(),"",txtNewPassword.getText(),userDetails.getEmail()));
             if(isUpdated){
                 //saved
                 new Alert(Alert.AlertType.CONFIRMATION,"Successfully updated!").show();
