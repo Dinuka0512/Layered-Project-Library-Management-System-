@@ -42,8 +42,6 @@ public class HomePage implements Initializable {
     @FXML
     private StackedBarChart<String, Number> barchartMember;
 
-
-
     @FXML
     private AnchorPane workSpace;
 

@@ -1,5 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
 
+import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.UserBO;
 import edu.ijse.gdse.libarymanagementsystem.db.DBConnection;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.IssueTableDto;
@@ -120,7 +122,7 @@ public class ManageBookIssueView implements Initializable {
     private final MemberModel memberModel = new MemberModel();
     private final BookModel bookModel = new BookModel();
     private final IssueModel issueModel = new IssueModel();
-    private final UserModel userModel = new UserModel();
+
     private final ManageBookIssueModel manageBookIssueModel = new ManageBookIssueModel();
 
     private BookDto bookDetail = null;
@@ -151,6 +153,7 @@ public class ManageBookIssueView implements Initializable {
     @FXML
     private TableView<IssueTableTm> tableIssue;
 
+    private UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //TEMP TABLE COLUMN INITIALIZING.....
@@ -494,7 +497,7 @@ public class ManageBookIssueView implements Initializable {
 
 
     private void bookIssuingProcess(){
-        String userId = userModel.getUserId(DashBoardContro.getUserEmail());
+        String userId = userBO.getUserId(DashBoardContro.getUserEmail());
         //HERE GET THE DATE ....
         String date = String.valueOf(LocalDate.now());
 

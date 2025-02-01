@@ -28,6 +28,25 @@ public class UserDAOImpl implements UserDAO {
         return dto;
     }
 
+    @Override
+    public String getUserId(String email){
+        try{
+            String sql = "select User_Id from user where email = ?";
+            ResultSet res = CrudUtil.execute(sql, email);
+            if(res.next()){
+                return res.getString("User_Id");
+            }
+            return null;
+        }catch (SQLException e1){
+            System.out.println("SQL Exception");
+            e1.printStackTrace();
+        }catch (ClassNotFoundException e2){
+            System.out.println("Class Not found Exception");
+            e2.printStackTrace();
+        }
+        return null;
+    }
+
     //USER UNIQUE METHOD
     //HERE CHECK THE
 

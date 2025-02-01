@@ -1,5 +1,6 @@
 package edu.ijse.gdse.libarymanagementsystem.bo;
 
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.impl.BookBOimpl;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.impl.BranchBOimpl;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.impl.UserBOimpl;
 
@@ -17,7 +18,7 @@ public class BOFactory {
     }
 
     public enum BOType{
-        BRANCH,USER
+        BRANCH,USER,BOOK
     }
 
     public SuperBO getBO(BOType type){
@@ -27,6 +28,9 @@ public class BOFactory {
             }
             case USER -> {
                 return new UserBOimpl();
+            }
+            case BOOK -> {
+                return new BookBOimpl();
             }
             default -> {
                 return null;
