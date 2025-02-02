@@ -1,5 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
 
+import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.SupplierDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.SupplierTm;
@@ -107,6 +109,9 @@ public class ManageSuppliersView implements Initializable {
     private final SupplierModel supplierModel = new SupplierModel();
     private final BookModel bookModel = new BookModel();
     private final ManageSupplierModel manageSupplierModel = new ManageSupplierModel();
+
+    //========
+    private BookBO bookBO = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //HERE INITIALIZE THE TABLE COLUMNS
@@ -188,7 +193,8 @@ public class ManageSuppliersView implements Initializable {
     void onClickCombo(ActionEvent event) {
         try {
             if (comboBookId.getValue() != null) {
-                BookDto bookDetails = bookModel.getBookDetails(comboBookId.getValue());
+                //HERE GET THE BOOK DETAILS
+                BookDto bookDetails = bookBO.getBookDetails(comboBookId.getValue());
                 if(bookDetails != null){
                     lblBookName.setText(comboBookId.getValue() + " | " + bookDetails.getName());
                 }else{
@@ -357,7 +363,7 @@ public class ManageSuppliersView implements Initializable {
     void addBookToTempTable(ActionEvent event) {
         try {
             if (comboBookId.getValue() != null) {
-                BookDto bookDetails = bookModel.getBookDetails(comboBookId.getValue());
+                BookDto bookDetails = bookBO.getBookDetails(comboBookId.getValue());
                 Button btn = new Button("Remove");
                 TempBookTM bookTM = new TempBookTM(
                         bookDetails.getBookId(),

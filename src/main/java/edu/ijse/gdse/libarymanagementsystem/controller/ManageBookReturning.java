@@ -1,5 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
 
+import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.MemberDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.BookReturningTm;
@@ -116,6 +118,9 @@ public class ManageBookReturning implements Initializable {
     private ReturnBookModel returnBookModel  = new ReturnBookModel();
 
     private final MemberModel memberModel = new MemberModel();
+
+    //=======
+    private BookBO bookBO = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //INITIALIZING TABLE COLUMNS
@@ -191,7 +196,7 @@ public class ManageBookReturning implements Initializable {
         try {
             tabelDetails = BookReturningTabel.getSelectionModel().getSelectedItem();
             if (tabelDetails != null) {
-                bookDetail = bookModel.getBookDetails(tabelDetails.getBookId());
+                bookDetail = bookBO.getBookDetails(tabelDetails.getBookId());
 
                 lblBookId.setText(bookDetail.getBookId());
                 lblBookName.setText(bookDetail.getName());

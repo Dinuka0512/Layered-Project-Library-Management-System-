@@ -1,6 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.UserBO;
 import edu.ijse.gdse.libarymanagementsystem.db.DBConnection;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
@@ -153,7 +154,9 @@ public class ManageBookIssueView implements Initializable {
     @FXML
     private TableView<IssueTableTm> tableIssue;
 
+    //======
     private UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
+    BookBO bookBO = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //TEMP TABLE COLUMN INITIALIZING.....
@@ -293,8 +296,11 @@ public class ManageBookIssueView implements Initializable {
     void comboBookNameLoad(ActionEvent event) {
         //HERE LOAD THE BOOK NAME TO LABEL
         try{
-                String bookId = comboBookId.getValue();
-                bookDetail = bookModel.getBookDetails(bookId);
+            String bookId = comboBookId.getValue();
+            if(bookId != "" ){
+                bookDetail = bookBO.getBookDetails(bookId);
+            }
+
             if(bookDetail != null){
                 lblBookIdAndName.setText(bookId + " | " + bookDetail.getName());
 

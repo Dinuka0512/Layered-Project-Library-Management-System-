@@ -1,6 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.UserBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.Barchart;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
@@ -150,13 +151,12 @@ public class HomePage implements Initializable {
 
     private static String userName;
     private final BookIssueModel bookIssueModel = new BookIssueModel();
-    private final BookModel bookModel = new BookModel();
     private final MemberModel memberModel = new MemberModel();
     private final IssueModel issueModel = new IssueModel();
     private final ReturnBookModel returnBookModel = new ReturnBookModel();
     private final BookSupplyModel bookSupplyModel = new BookSupplyModel();
     private UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
-
+    private BookBO bookBo = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
     @FXML
     private TextField txtNewUserName;
     private String date = String.valueOf(LocalDate.now());
@@ -378,7 +378,8 @@ public class HomePage implements Initializable {
             int lblId = 1;
             ArrayList<BookIdAndQty> bookIds = bookIssueModel.getPopularBooks();
             for(BookIdAndQty arr : bookIds){
-                BookDto dto = bookModel.getBookDetails(arr.getBook_Id());
+                //HERE GET THE BOOK DETAILS
+                BookDto dto = bookBo.getBookDetails(arr.getBook_Id());
 
                 if (lblId == 1) {
                     lblBook1.setText(dto.getName());

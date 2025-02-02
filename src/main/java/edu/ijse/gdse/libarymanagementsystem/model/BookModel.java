@@ -9,24 +9,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class BookModel {
-    public ArrayList<BookDto> getAllBooks() throws SQLException, ClassNotFoundException{
-        String sql = "select * from Book";
-        ResultSet res = CrudUtil.execute(sql);
-        ArrayList<BookDto> dtos =  new ArrayList<>();
-        while(res.next()){
-            BookDto dto = new BookDto(
-                    res.getString("Book_Id"),
-                    res.getString("name"),
-                    res.getInt("qty"),
-                    res.getDouble("price"),
-                    res.getString("bookshelf_Id")
-            );
-
-            dtos.add(dto);
-        }
-        return dtos;
-    }
-
     public String getNextBookId() throws SQLException, ClassNotFoundException{
         String sql = "select Book_Id from Book Order by Book_Id desc limit 1";
         ResultSet res = CrudUtil.execute(sql);
@@ -69,25 +51,6 @@ public class BookModel {
         return ids;
     }
 
-    public BookDto getBookDetails(String bookId) throws ClassNotFoundException, SQLException{
-        String sql = "select * from Book where Book_Id = ?";
-        ResultSet res = CrudUtil.execute(
-                sql,
-                bookId
-        );
-
-        if(res.next()){
-            BookDto dto = new BookDto(
-                    res.getString("Book_Id"),
-                    res.getString("name"),
-                    res.getInt("qty"),
-                    res.getDouble("price"),
-                    res.getString("bookshelf_Id")
-            );
-            return dto;
-        }
-        return null;
-    }
 
     public ArrayList<BookDto> searchBook(String name) throws SQLException, ClassNotFoundException {
         ArrayList<BookDto> bookList = new ArrayList<>();

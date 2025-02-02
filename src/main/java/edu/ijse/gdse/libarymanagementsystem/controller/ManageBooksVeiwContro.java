@@ -1,5 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
 
+import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.*;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.BookTm;
 import edu.ijse.gdse.libarymanagementsystem.model.*;
@@ -187,6 +189,9 @@ public class ManageBooksVeiwContro implements Initializable {
     private final AuthorBookModel authorBookModel = new AuthorBookModel();
     private final BookCategoryModel bookCategoryModel = new BookCategoryModel();
     private final ManabeBooksViewModel manabeBooksViewModel = new ManabeBooksViewModel();
+
+    //===========================
+    BookBO bookBo = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
 
     //HERE SAVE NEW SECTION
     @FXML
@@ -423,7 +428,7 @@ public class ManageBooksVeiwContro implements Initializable {
             //THIS ARRAYS LIST CREATE FOR GRAB THE ALL DATA NEED TO TABLE
             ArrayList<BookTm> bookTms = new ArrayList<>();
 
-            ArrayList<BookDto> res = bookModel.getAllBooks();
+            ArrayList<BookDto> res = bookBo.getAll();
             //RUN THE FOR EACH LOOP FOR WHILE THE Book dtos...
 
             for(BookDto dto : res){
