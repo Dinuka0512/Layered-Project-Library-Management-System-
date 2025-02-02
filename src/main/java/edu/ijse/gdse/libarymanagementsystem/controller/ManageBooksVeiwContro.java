@@ -185,7 +185,6 @@ public class ManageBooksVeiwContro implements Initializable {
     private final CategoryModel categoryModel = new CategoryModel();
     private final BookShelfModel bookShelfModel = new BookShelfModel();
     private final SectionModel sectionModel = new SectionModel();
-    private final BookModel bookModel = new BookModel();
     private final AuthorBookModel authorBookModel = new AuthorBookModel();
     private final BookCategoryModel bookCategoryModel = new BookCategoryModel();
     private final ManabeBooksViewModel manabeBooksViewModel = new ManabeBooksViewModel();
@@ -360,7 +359,7 @@ public class ManageBooksVeiwContro implements Initializable {
             try{
                 String categoryId = categoryModel.getCategoryId(bookTm.getCategoryName());
                 String authorId = authorModel.getAuthorIds(bookTm.getAuthorName());
-                String bookShelfId = bookModel.getBookShelfId(bookTm.getBookId());
+                String bookShelfId = bookBo.getBookShelfId(bookTm.getBookId());
 //                BookSuplyDto supplyDto = bookSupplyModel.getAll(bookTm.getBookId());
 
                 if(categoryId != null){
@@ -626,7 +625,7 @@ public class ManageBooksVeiwContro implements Initializable {
     //LOARD IDS
     private void loardNextBookId(){
         try{
-            String newId = bookModel.getNextBookId();
+            String newId = bookBo.getNextBookId();
             lblBookId.setText(newId);
         }catch (ClassNotFoundException e1){
             System.out.println("ClassNotFoundException");
@@ -937,7 +936,7 @@ public class ManageBooksVeiwContro implements Initializable {
             * */
 
             try{
-                boolean isDelete = bookModel.deleteBook(lblBookId.getText());
+                boolean isDelete = bookBo.deleteBook(lblBookId.getText());
                 if(isDelete){
                     pageReset();
                     new Alert(Alert.AlertType.CONFIRMATION,"Deleted!..").show();
@@ -995,7 +994,7 @@ public class ManageBooksVeiwContro implements Initializable {
     void searchTheBook(ActionEvent event) {
         try{
             if(!txtSearch.getText().equals("")){
-                ArrayList<BookDto> books = bookModel.searchBook(txtSearch.getText());
+                ArrayList<BookDto> books = bookBo.searchBook(txtSearch.getText());
                 if(!books.isEmpty()){
                     anchSearchResults.setVisible(true);
                     ObservableList<BookDto> observableList = FXCollections.observableArrayList();

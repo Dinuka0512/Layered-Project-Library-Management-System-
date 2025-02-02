@@ -6,7 +6,6 @@ import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.SupplierDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.SupplierTm;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.TempBookTM;
-import edu.ijse.gdse.libarymanagementsystem.model.BookModel;
 import edu.ijse.gdse.libarymanagementsystem.model.ManageSupplierModel;
 import edu.ijse.gdse.libarymanagementsystem.model.SupplierModel;
 import edu.ijse.gdse.libarymanagementsystem.util.Validation;
@@ -107,7 +106,6 @@ public class ManageSuppliersView implements Initializable {
     private TableView<SupplierTm> tableSupplier;
     private ArrayList<TempBookTM> tempBookTMSArrayList = new ArrayList<>();
     private final SupplierModel supplierModel = new SupplierModel();
-    private final BookModel bookModel = new BookModel();
     private final ManageSupplierModel manageSupplierModel = new ManageSupplierModel();
 
     //========
@@ -173,7 +171,7 @@ public class ManageSuppliersView implements Initializable {
 
     private void loadComboBoxValues(){
         try{
-            ArrayList<String> bookIds = bookModel.getAllBookIds();
+            ArrayList<String> bookIds = bookBO.getAllBookIds();
                 if(bookIds != null){
                 ObservableList<String> observableList = FXCollections.observableArrayList();
                 observableList.addAll(bookIds);

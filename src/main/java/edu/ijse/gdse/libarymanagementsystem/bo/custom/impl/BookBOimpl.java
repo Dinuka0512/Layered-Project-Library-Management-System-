@@ -39,5 +39,43 @@ public class BookBOimpl implements BookBO {
         return bookDtos;
     }
 
+    //HERE GENERATE ID
+    @Override
+    public String getNextBookId() throws SQLException, ClassNotFoundException {
+        return bookDAO.generateNewId();
+    }
 
+    @Override
+    public boolean deleteBook(String book_Id) throws SQLException, ClassNotFoundException {
+        return bookDAO.delete(book_Id);
+    }
+
+    @Override
+    public String getBookShelfId(String bookId) throws SQLException, ClassNotFoundException {
+        return bookDAO.getBookShelfId(bookId);
+    }
+
+    @Override
+    public ArrayList<String> getAllBookIds() throws ClassNotFoundException, SQLException {
+        return bookDAO.getAllBookIds();
+    }
+
+    @Override
+    public ArrayList<BookDto> searchBook(String name) throws SQLException, ClassNotFoundException {
+        ArrayList<BookDto> bookDtoList = new ArrayList<>();
+        ArrayList<Book> bookList = bookDAO.searchBook(name);
+        for(Book book: bookList){
+            BookDto dto = new BookDto(
+                    book.getBookId(),
+                    book.getName(),
+                    book.getQty(),
+                    book.getPrice(),
+                    book.getBookShelfId()
+            );
+
+            bookDtoList.add(dto);
+        }
+
+        return bookDtoList;
+    }
 }

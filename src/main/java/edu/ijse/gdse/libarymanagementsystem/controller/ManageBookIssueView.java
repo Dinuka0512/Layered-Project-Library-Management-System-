@@ -121,7 +121,6 @@ public class ManageBookIssueView implements Initializable {
     private Button btnBookReturning;
 
     private final MemberModel memberModel = new MemberModel();
-    private final BookModel bookModel = new BookModel();
     private final IssueModel issueModel = new IssueModel();
 
     private final ManageBookIssueModel manageBookIssueModel = new ManageBookIssueModel();
@@ -258,7 +257,7 @@ public class ManageBookIssueView implements Initializable {
     private void ladBookIds(){
         //HERE LOAD THE BOOK IDS FOR COMBO BOX
         try{
-            ArrayList<String> dto = bookModel.getAllBookIds();
+            ArrayList<String> dto = bookBO.getAllBookIds();
             ObservableList<String> observableList= FXCollections.observableArrayList();
             for(String id : dto){
                 observableList.add(id);

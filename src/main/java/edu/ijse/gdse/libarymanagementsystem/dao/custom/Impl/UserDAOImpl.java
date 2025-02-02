@@ -123,8 +123,8 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void delete(String id) throws SQLException, ClassNotFoundException {
-
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+        return false;
     }
 
     @Override

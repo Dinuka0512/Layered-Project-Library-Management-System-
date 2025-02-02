@@ -5,13 +5,10 @@ import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.MemberDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.BookReturningTm;
-import edu.ijse.gdse.libarymanagementsystem.model.BookModel;
 import edu.ijse.gdse.libarymanagementsystem.model.ManageBookReturningModel;
 import edu.ijse.gdse.libarymanagementsystem.model.MemberModel;
 import edu.ijse.gdse.libarymanagementsystem.model.ReturnBookModel;
 import edu.ijse.gdse.libarymanagementsystem.util.Gmail;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -28,13 +24,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
-import java.time.Period;
-import java.time.chrono.ChronoPeriod;
-import java.time.chrono.Chronology;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 
@@ -101,7 +91,6 @@ public class ManageBookReturning implements Initializable {
     @FXML
     private TableColumn<BookReturningTm, String> columnMemName;
     private final ManageBookReturningModel manageBookReturningModel = new ManageBookReturningModel();
-    private final BookModel bookModel = new BookModel();
 
     private BookReturningTm tabelDetails;
     private long daysLate;
