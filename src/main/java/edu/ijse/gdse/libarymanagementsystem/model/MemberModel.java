@@ -1,8 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.model;
 
-import edu.ijse.gdse.libarymanagementsystem.dto.Member;
+import edu.ijse.gdse.libarymanagementsystem.dto.MemberPopularDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.MemberDto;
-import edu.ijse.gdse.libarymanagementsystem.dto.tm.MemberTm;
 import edu.ijse.gdse.libarymanagementsystem.util.CrudUtil;
 
 import java.sql.ResultSet;
@@ -24,8 +23,6 @@ public class MemberModel {
         return "M001";
     }
 
-
-
     public ArrayList<MemberDto> getAllDetails() throws SQLException, ClassNotFoundException{
         String sql = "select * from Member";
         ResultSet res = CrudUtil.execute(sql);
@@ -44,7 +41,6 @@ public class MemberModel {
 
         return dtos;
     }
-
 
     public boolean saveMember(MemberDto dto) throws SQLException, ClassNotFoundException {
         String sql = "insert into Member value (?,?,?,?,?)";
@@ -140,18 +136,4 @@ public class MemberModel {
         return null;
     }
 
-    public ArrayList<Member> getPopularMember() throws SQLException, ClassNotFoundException{
-        String sql = "SELECT m.name, m.email, COUNT(i.Member_Id) AS Total_Issues FROM Issue i JOIN Book_Issue bi ON i.Issue_Id = bi.Issue_Id JOIN Member m ON i.Member_Id = m.Member_Id GROUP BY m.Member_Id, m.name, m.email ORDER BY Total_Issues DESC LIMIT 3";
-        ResultSet res = CrudUtil.execute(sql);
-        ArrayList<Member> popMembers = new ArrayList<>();
-        while(res.next()){
-            Member member = new Member(
-                res.getString("name"),
-                res.getInt("Total_Issues")
-            );
-
-            popMembers.add(member);
-        }
-        return popMembers;
-    }
 }

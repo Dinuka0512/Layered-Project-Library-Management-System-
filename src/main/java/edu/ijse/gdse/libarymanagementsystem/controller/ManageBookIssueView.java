@@ -24,11 +24,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
-
-import javax.mail.*;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -37,7 +32,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class ManageBookIssueView implements Initializable {

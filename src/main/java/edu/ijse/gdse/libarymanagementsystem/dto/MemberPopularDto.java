@@ -6,7 +6,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class Member {
+public class MemberPopularDto {
     private String name;
     private int totalIssues;
 }

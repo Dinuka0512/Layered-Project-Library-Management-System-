@@ -7,6 +7,7 @@ import edu.ijse.gdse.libarymanagementsystem.bo.custom.impl.BranchBOimpl;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.impl.UserBOimpl;
 import edu.ijse.gdse.libarymanagementsystem.dao.custom.Impl.BookDAOimpl;
 import edu.ijse.gdse.libarymanagementsystem.dao.custom.Impl.BranchDAOImpl;
+import edu.ijse.gdse.libarymanagementsystem.dao.custom.Impl.MemberDAOimpl;
 import edu.ijse.gdse.libarymanagementsystem.dao.custom.Impl.UserDAOImpl;
 
 public class DAOFactory {
@@ -21,7 +22,7 @@ public class DAOFactory {
     }
 
     public enum DAOType{
-        BRANCH,USER,BOOK
+        BRANCH,USER,BOOK,MEMBER
     }
 
     public SuperDAO getDAO(DAOFactory.DAOType type){
@@ -34,6 +35,9 @@ public class DAOFactory {
             }
             case BOOK -> {
                 return new BookDAOimpl();
+            }
+            case MEMBER -> {
+                return new MemberDAOimpl();
             }
             default -> {
                 return null;

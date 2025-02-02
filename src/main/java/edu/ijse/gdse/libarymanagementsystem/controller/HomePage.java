@@ -2,13 +2,14 @@ package edu.ijse.gdse.libarymanagementsystem.controller;
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.MemberBO;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.UserBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.Barchart;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.BookIdAndQty;
 import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.Linechart;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookSupplyNameAndQtyDto;
-import edu.ijse.gdse.libarymanagementsystem.dto.Member;
+import edu.ijse.gdse.libarymanagementsystem.dto.MemberPopularDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.UserDto;
 import edu.ijse.gdse.libarymanagementsystem.model.*;
 import edu.ijse.gdse.libarymanagementsystem.util.Validation;
@@ -151,12 +152,18 @@ public class HomePage implements Initializable {
 
     private static String userName;
     private final BookIssueModel bookIssueModel = new BookIssueModel();
-    private final MemberModel memberModel = new MemberModel();
     private final IssueModel issueModel = new IssueModel();
     private final ReturnBookModel returnBookModel = new ReturnBookModel();
     private final BookSupplyModel bookSupplyModel = new BookSupplyModel();
+
+
+    //==============================
+    private MemberBO memberBO = (MemberBO) BOFactory.getInstance().getBO(BOFactory.BOType.MEMBER);
     private UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
     private BookBO bookBo = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
+    //=======================
+
+
     @FXML
     private TextField txtNewUserName;
     private String date = String.valueOf(LocalDate.now());
@@ -408,8 +415,8 @@ public class HomePage implements Initializable {
     private void setPopularMembers(){
         try{
             int i = 1;
-            ArrayList<Member> popMembers = memberModel.getPopularMember();
-            for(Member member : popMembers){
+            ArrayList<MemberPopularDto> popMembers = memberBO.getPopularMember();
+            for(MemberPopularDto member : popMembers){
                 if(i==1){
                     lblpopMemName1.setText(member.getName());
                     lblpopMemEmail1.setText(Integer.toString(member.getTotalIssues()));
