@@ -3,9 +3,7 @@ package edu.ijse.gdse.libarymanagementsystem.bo.custom.impl;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.MemberBO;
 import edu.ijse.gdse.libarymanagementsystem.dao.DAOFactory;
 import edu.ijse.gdse.libarymanagementsystem.dao.custom.MemberDAO;
-import edu.ijse.gdse.libarymanagementsystem.dto.MemberDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.MemberPopularDto;
-import edu.ijse.gdse.libarymanagementsystem.entity.Member;
 import edu.ijse.gdse.libarymanagementsystem.entity.MemberPopular;
 
 import java.sql.SQLException;
@@ -27,5 +25,9 @@ public class MemberBOimpl implements MemberBO {
         }
 
         return memberPopularDtos;
+    }
+    @Override
+    public String genarateMemberId() throws SQLException, ClassNotFoundException {
+        return memberDAO.generateNewId();
     }
 }

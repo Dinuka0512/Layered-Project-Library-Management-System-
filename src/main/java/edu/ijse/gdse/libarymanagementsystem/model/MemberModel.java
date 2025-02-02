@@ -9,20 +9,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MemberModel {
-    public String genarateMemberId() throws SQLException, ClassNotFoundException{
-        String sql = "select Member_Id from Member Order by Member_Id desc limit 1";
-        ResultSet res = CrudUtil.execute(sql);
-        if(res.next()){
-            String lastId = res.getString("Member_Id"); //M001
-            String subString = lastId.substring(1); //001
-            int i = Integer.parseInt(subString); //1
-            i = i + 1; // 2
-            String newId = String.format("M%03d", i);
-            return newId;
-        }
-        return "M001";
-    }
-
     public ArrayList<MemberDto> getAllDetails() throws SQLException, ClassNotFoundException{
         String sql = "select * from Member";
         ResultSet res = CrudUtil.execute(sql);

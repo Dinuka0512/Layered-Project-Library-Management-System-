@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class MemberDAOimpl implements MemberDAO {
     //==========================
+
     @Override
     public ArrayList<MemberPopular> getPopularMember() throws SQLException, ClassNotFoundException {
         String sql = "SELECT m.name, m.email, COUNT(i.Member_Id) AS Total_Issues FROM Issue i JOIN Book_Issue bi ON i.Issue_Id = bi.Issue_Id JOIN Member m ON i.Member_Id = m.Member_Id GROUP BY m.Member_Id, m.name, m.email ORDER BY Total_Issues DESC LIMIT 3";
@@ -27,7 +28,29 @@ public class MemberDAOimpl implements MemberDAO {
         }
         return popMembers;
     }
+
+    @Override
+    public String generateNewId() throws SQLException, ClassNotFoundException {
+        String sql = "select Member_Id from Member Order by Member_Id desc limit 1";
+        ResultSet res = CrudUtil.execute(sql);
+        if(res.next()){
+            String lastId = res.getString("Member_Id"); //M001
+            String subString = lastId.substring(1); //001
+            int i = Integer.parseInt(subString); //1
+            i = i + 1; // 2
+            String newId = String.format("M%03d", i);
+            return newId;
+        }
+        return "M001";
+    }
+
     //==========================
+
+    @Override
+    public Member search(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
     @Override
     public ArrayList<Member> getAll() throws SQLException, ClassNotFoundException {
         return null;
@@ -51,15 +74,5 @@ public class MemberDAOimpl implements MemberDAO {
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
         return false;
-    }
-
-    @Override
-    public String generateNewId() throws SQLException, ClassNotFoundException {
-        return null;
-    }
-
-    @Override
-    public Member search(String id) throws SQLException, ClassNotFoundException {
-        return null;
     }
 }

@@ -1,5 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
 
+import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.MemberBO;
 import edu.ijse.gdse.libarymanagementsystem.db.DBConnection;
 import edu.ijse.gdse.libarymanagementsystem.dto.MemberDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.MemberTm;
@@ -87,6 +89,12 @@ public class ManageMemberViewContro implements Initializable {
 
     private final MemberModel memberModel = new MemberModel();
 
+
+    //===============
+    private MemberBO memberBO = (MemberBO) BOFactory.getInstance().getBO(BOFactory.BOType.MEMBER);
+
+    //===============
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //SET VALUES FOR THE LOAD TABLES
@@ -144,7 +152,7 @@ public class ManageMemberViewContro implements Initializable {
 
     private void genarateMemberID(){
         try{
-            String newId = memberModel.genarateMemberId();
+            String newId = memberBO.genarateMemberId();
             lblMemId.setText(newId);
         }catch (SQLException e1){
             System.out.println("SQLException");
