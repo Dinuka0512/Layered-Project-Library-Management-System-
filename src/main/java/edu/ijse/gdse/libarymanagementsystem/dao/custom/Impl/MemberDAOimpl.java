@@ -1,6 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.dao.custom.Impl;
 
 import edu.ijse.gdse.libarymanagementsystem.dao.custom.MemberDAO;
+import edu.ijse.gdse.libarymanagementsystem.dto.MemberDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.MemberPopularDto;
 import edu.ijse.gdse.libarymanagementsystem.entity.Member;
 import edu.ijse.gdse.libarymanagementsystem.entity.MemberPopular;
@@ -44,21 +45,46 @@ public class MemberDAOimpl implements MemberDAO {
         return "M001";
     }
 
+    @Override
+    public ArrayList<Member> getAll() throws SQLException, ClassNotFoundException {
+        String sql = "select * from Member";
+        ResultSet res = CrudUtil.execute(sql);
+        ArrayList<Member> dtos = new ArrayList<>();
+        while(res.next()){
+            Member member = new Member(
+                    res.getString("Member_Id"),
+                    res.getString("name"),
+                    res.getString("adress"),
+                    res.getString("email"),
+                    res.getString("contact_No")
+            );
+
+            dtos.add(member);
+        }
+
+        return dtos;
+    }
+
+    @Override
+    public boolean save(Member dto) throws SQLException, ClassNotFoundException {
+        String sql = "insert into Member value (?,?,?,?,?)";
+        boolean isSaved = CrudUtil.execute(
+                sql,
+                dto.getMemberId(),
+                dto.getName(),
+                dto.getAddress(),
+                dto.getEmail(),
+                dto.getContact()
+        );
+
+        return isSaved;
+    }
+
     //==========================
 
     @Override
     public Member search(String id) throws SQLException, ClassNotFoundException {
         return null;
-    }
-
-    @Override
-    public ArrayList<Member> getAll() throws SQLException, ClassNotFoundException {
-        return null;
-    }
-
-    @Override
-    public boolean save(Member dto) throws SQLException, ClassNotFoundException {
-        return false;
     }
 
     @Override

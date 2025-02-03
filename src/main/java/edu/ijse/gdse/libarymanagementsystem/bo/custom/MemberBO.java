@@ -10,4 +10,6 @@ import java.util.ArrayList;
 public interface MemberBO extends SuperBO {
     ArrayList<MemberPopularDto> getPopularMember() throws SQLException, ClassNotFoundException;
     String genarateMemberId() throws SQLException, ClassNotFoundException;
+    ArrayList<MemberDto> getAllDetails() throws SQLException, ClassNotFoundException;
+    boolean saveMember(MemberDto dto) throws SQLException, ClassNotFoundException;
 }

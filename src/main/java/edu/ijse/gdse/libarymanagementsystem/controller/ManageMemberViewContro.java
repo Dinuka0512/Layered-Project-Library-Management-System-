@@ -124,7 +124,7 @@ public class ManageMemberViewContro implements Initializable {
 
     private void loadTable(){
         try{
-            ArrayList<MemberDto> memberDtos = memberModel.getAllDetails();
+            ArrayList<MemberDto> memberDtos = memberBO.getAllDetails();
             ObservableList<MemberTm> memberTMS = FXCollections.observableArrayList();
 
             for(MemberDto dto : memberDtos){
@@ -223,7 +223,7 @@ public class ManageMemberViewContro implements Initializable {
         );
 
         try{
-            boolean isSaved = memberModel.saveMember(memberDto);
+            boolean isSaved = memberBO.saveMember(memberDto);
             if(isSaved){
                 reloadPage();
                 new Alert(Alert.AlertType.CONFIRMATION,"Member Saved SuccessFully..!").show();

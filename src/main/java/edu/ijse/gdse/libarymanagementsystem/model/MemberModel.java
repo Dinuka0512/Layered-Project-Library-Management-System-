@@ -9,39 +9,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MemberModel {
-    public ArrayList<MemberDto> getAllDetails() throws SQLException, ClassNotFoundException{
-        String sql = "select * from Member";
-        ResultSet res = CrudUtil.execute(sql);
-        ArrayList<MemberDto> dtos = new ArrayList<>();
-        while(res.next()){
-            MemberDto member = new MemberDto(
-                    res.getString("Member_Id"),
-                    res.getString("name"),
-                    res.getString("adress"),
-                    res.getString("email"),
-                    res.getString("contact_No")
-            );
-
-            dtos.add(member);
-        }
-
-        return dtos;
-    }
-
-    public boolean saveMember(MemberDto dto) throws SQLException, ClassNotFoundException {
-        String sql = "insert into Member value (?,?,?,?,?)";
-        boolean isSaved = CrudUtil.execute(
-                sql,
-                dto.getMemberId(),
-                dto.getName(),
-                dto.getAddress(),
-                dto.getEmail(),
-                dto.getContact()
-        );
-
-        return isSaved;
-    }
-
     public boolean isTheEmailAllreadyHave(String email) throws SQLException, ClassNotFoundException{
         String sql = "select * from Member where email = ?";
         ResultSet res = CrudUtil.execute(
@@ -56,13 +23,11 @@ public class MemberModel {
         return false;
     }
 
-
     public boolean deleteMember(String id) throws SQLException, ClassNotFoundException{
         String sql = "delete from Member where Member_Id = ?";
         boolean res = CrudUtil.execute(sql, id);
         return res;
     }
-
 
     public boolean updateMember(MemberDto dto) throws SQLException, ClassNotFoundException{
         String sql = "update Member set name = ?, adress = ?, email = ?, contact_No = ? where Member_Id = ?";
