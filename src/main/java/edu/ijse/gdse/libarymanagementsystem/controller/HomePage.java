@@ -1,10 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
-import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
-import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookSupplyBO;
-import edu.ijse.gdse.libarymanagementsystem.bo.custom.MemberBO;
-import edu.ijse.gdse.libarymanagementsystem.bo.custom.UserBO;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.*;
 import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.Barchart;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.BookIdAndQty;
@@ -152,13 +149,13 @@ public class HomePage implements Initializable {
     private Label lblSupplierSupbQty3;
 
     private static String userName;
-    private final BookIssueModel bookIssueModel = new BookIssueModel();
     private final IssueModel issueModel = new IssueModel();
     private final ReturnBookModel returnBookModel = new ReturnBookModel();
 
 
     //==============================
 
+    private BookIssueBO bookIssueBO = (BookIssueBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOKISSUE);
     private MemberBO memberBO = (MemberBO) BOFactory.getInstance().getBO(BOFactory.BOType.MEMBER);
     private UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
     private BookBO bookBo = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
@@ -394,7 +391,7 @@ public class HomePage implements Initializable {
         //HERE SET THE POPULAR BOOKS
         try{
             int lblId = 1;
-            ArrayList<BookIdAndQty> bookIds = bookIssueModel.getPopularBooks();
+            ArrayList<BookIdAndQty> bookIds = bookIssueBO.getPopularBooks();
             for(BookIdAndQty arr : bookIds){
                 //HERE GET THE BOOK DETAILS
                 BookDto dto = bookBo.getBookDetails(arr.getBook_Id());

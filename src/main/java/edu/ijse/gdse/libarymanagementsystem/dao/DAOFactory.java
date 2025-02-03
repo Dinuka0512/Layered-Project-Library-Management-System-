@@ -19,7 +19,7 @@ public class DAOFactory {
     }
 
     public enum DAOType{
-        BRANCH,USER,BOOK,MEMBER,BOOKSUPPLY
+        BRANCH,USER,BOOK,MEMBER,BOOKSUPPLY,BOOKISSUE
     }
 
     public SuperDAO getDAO(DAOFactory.DAOType type){
@@ -38,6 +38,9 @@ public class DAOFactory {
             }
             case BOOKSUPPLY -> {
                 return new BookSupplyDAOimpl();
+            }
+            case BOOKISSUE -> {
+                return new BookIssueDAOimpl();
             }
             default -> {
                 return null;

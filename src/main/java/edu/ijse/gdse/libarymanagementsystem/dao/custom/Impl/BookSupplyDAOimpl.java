@@ -11,8 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BookSupplyDAOimpl implements BookSupplyDAO {
-    //==============================
-
 
     @Override
     public ArrayList<BookSupplyNameAndQty> getSupplierNameAndAllBookSuppliedQty() throws SQLException, ClassNotFoundException {
