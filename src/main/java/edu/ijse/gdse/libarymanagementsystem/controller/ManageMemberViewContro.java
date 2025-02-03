@@ -5,7 +5,6 @@ import edu.ijse.gdse.libarymanagementsystem.bo.custom.MemberBO;
 import edu.ijse.gdse.libarymanagementsystem.db.DBConnection;
 import edu.ijse.gdse.libarymanagementsystem.dto.MemberDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.MemberTm;
-import edu.ijse.gdse.libarymanagementsystem.model.MemberModel;
 import edu.ijse.gdse.libarymanagementsystem.util.Validation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,7 +23,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.*;
 
 public class ManageMemberViewContro implements Initializable {
@@ -87,7 +85,6 @@ public class ManageMemberViewContro implements Initializable {
     @FXML
     private AnchorPane memberBody;
 
-    private final MemberModel memberModel = new MemberModel();
 
 
     //===============
@@ -178,7 +175,7 @@ public class ManageMemberViewContro implements Initializable {
                     //CHECK ADDRESS
                     if(Validation.isValidEmail(txtMemEmail.getText()) && !txtMemEmail.getText().equals(null)){
                         //CHECK EMAIL
-                        if(memberModel.isTheEmailAllreadyHave(txtMemEmail.getText())){
+                        if(memberBO.isTheEmailAllreadyHave(txtMemEmail.getText())){
                             new Alert(Alert.AlertType.ERROR,"This Email is Allready Have").show();
                             return false;
                         }else {
@@ -306,7 +303,7 @@ public class ManageMemberViewContro implements Initializable {
                         txtMemContact.getText()
                 );
 
-                boolean res = memberModel.updateMember(dto);
+                boolean res = memberBO.updateMember(dto);
 
                 if(res){
                     //IS UPDATE DONE
@@ -334,7 +331,7 @@ public class ManageMemberViewContro implements Initializable {
                     //CHECK ADDRESS
                     if(Validation.isValidEmail(txtMemEmail.getText()) && !txtMemEmail.getText().equals(null)){
                         //CHECK EMAIL
-                        if(memberModel.isTheEmailAllreadyHave(txtMemEmail.getText()) && !memberModel.isThisEmail(lblMemId.getText(), txtMemEmail.getText())){
+                        if(memberBO.isTheEmailAllreadyHave(txtMemEmail.getText()) && !memberBO.isThisEmail(lblMemId.getText(), txtMemEmail.getText())){
                             new Alert(Alert.AlertType.ERROR,"This Email is Allready Have").show();
                             return false;
                         }else {
@@ -378,7 +375,7 @@ public class ManageMemberViewContro implements Initializable {
 
             if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
 
-                boolean isDeleted = memberModel.deleteMember(lblMemId.getText());
+                boolean isDeleted = memberBO.deleteMember(lblMemId.getText());
                 if (isDeleted) {
                     reloadPage();
                     new Alert(Alert.AlertType.CONFIRMATION, "Member deleted...!").show();

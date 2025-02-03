@@ -56,4 +56,35 @@ public class MemberBOimpl implements MemberBO {
     public boolean saveMember(MemberDto dto) throws SQLException, ClassNotFoundException {
         return memberDAO.save(new Member(dto.getMemberId(),dto.getName(),dto.getAddress(),dto.getEmail(),dto.getContact()));
     }
+
+    @Override
+    public boolean deleteMember(String id) throws SQLException, ClassNotFoundException {
+        return memberDAO.delete(id);
+    }
+
+    @Override
+    public boolean updateMember(MemberDto dto) throws SQLException, ClassNotFoundException {
+        return memberDAO.update(new Member(dto.getMemberId(),dto.getName(),dto.getAddress(),dto.getEmail(),dto.getContact()));
+    }
+
+    @Override
+    public boolean isTheEmailAllreadyHave(String email) throws SQLException, ClassNotFoundException {
+        return memberDAO.isTheEmailAllreadyHave(email);
+    }
+
+    @Override
+    public boolean isThisEmail(String id, String email) throws SQLException, ClassNotFoundException {
+        return memberDAO.isThisEmail(id, email);
+    }
+
+    @Override
+    public ArrayList<String> getAllMemberIds() throws SQLException, ClassNotFoundException {
+        return memberDAO.getAllMemberIds();
+    }
+
+    @Override
+    public MemberDto getMemberDetails(String memId) throws SQLException, ClassNotFoundException {
+        Member member = memberDAO.getMemberDetails(memId);
+        return new MemberDto(member.getMemberId(),member.getName(),member.getAddress(),member.getEmail(),member.getContact());
+    }
 }

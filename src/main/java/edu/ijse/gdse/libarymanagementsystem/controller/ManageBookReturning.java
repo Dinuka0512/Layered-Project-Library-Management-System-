@@ -2,11 +2,11 @@ package edu.ijse.gdse.libarymanagementsystem.controller;
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.MemberBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.MemberDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.BookReturningTm;
 import edu.ijse.gdse.libarymanagementsystem.model.ManageBookReturningModel;
-import edu.ijse.gdse.libarymanagementsystem.model.MemberModel;
 import edu.ijse.gdse.libarymanagementsystem.model.ReturnBookModel;
 import edu.ijse.gdse.libarymanagementsystem.util.Gmail;
 import javafx.collections.FXCollections;
@@ -106,10 +106,15 @@ public class ManageBookReturning implements Initializable {
     private Label lblFullPayment;
     private ReturnBookModel returnBookModel  = new ReturnBookModel();
 
-    private final MemberModel memberModel = new MemberModel();
+
 
     //=======
     private BookBO bookBO = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
+    private MemberBO memberBO = (MemberBO) BOFactory.getInstance().getBO(BOFactory.BOType.MEMBER);
+
+    //=======
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //INITIALIZING TABLE COLUMNS
@@ -277,7 +282,7 @@ public class ManageBookReturning implements Initializable {
 
     private void sendEmail(){
         try{
-            MemberDto memberDto = memberModel.getMemberDetails(tabelDetails.getMemID());
+            MemberDto memberDto = memberBO.getMemberDetails(tabelDetails.getMemID());
 
             String subject = "Book Return Confirmation & Late Fee Details Gnanapradeepa Public Library Bandaragama";
             String body = "Dear "+memberDto.getName()+",\n" +

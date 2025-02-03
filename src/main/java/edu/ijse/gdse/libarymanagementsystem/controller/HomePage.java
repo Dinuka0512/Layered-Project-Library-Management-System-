@@ -2,6 +2,7 @@ package edu.ijse.gdse.libarymanagementsystem.controller;
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookSupplyBO;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.MemberBO;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.UserBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.Barchart;
@@ -154,13 +155,15 @@ public class HomePage implements Initializable {
     private final BookIssueModel bookIssueModel = new BookIssueModel();
     private final IssueModel issueModel = new IssueModel();
     private final ReturnBookModel returnBookModel = new ReturnBookModel();
-    private final BookSupplyModel bookSupplyModel = new BookSupplyModel();
 
 
     //==============================
+
     private MemberBO memberBO = (MemberBO) BOFactory.getInstance().getBO(BOFactory.BOType.MEMBER);
     private UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
     private BookBO bookBo = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
+    private BookSupplyBO bookSupplyBO = (BookSupplyBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOKSUPPLY);
+
     //=======================
 
 
@@ -196,22 +199,30 @@ public class HomePage implements Initializable {
     }
 
     private void setPopularSupplier(){
-        ArrayList<BookSupplyNameAndQtyDto> dtos = bookSupplyModel.getSupplierNameAndAllBookSuppliedQty();
-        if(dtos != null){
-            int i = 1;
-            for(BookSupplyNameAndQtyDto dto : dtos){
-                if(i == 1){
-                    lblSupplierName1.setText(dto.getSupplierName());
-                    lblSupplierSupbQty1.setText(Integer.toString(dto.getQty()));
-                }else if(i == 2){
-                    lblSupplierName2.setText(dto.getSupplierName());
-                    lblSupplierSupbQty2.setText(Integer.toString(dto.getQty()));
-                } else if (i ==3) {
-                    lblSupplierName3.setText(dto.getSupplierName());
-                    lblSupplierSupbQty3.setText(Integer.toString(dto.getQty()));
+        try{
+            ArrayList<BookSupplyNameAndQtyDto> dtos = bookSupplyBO.getSupplierNameAndAllBookSuppliedQty();
+
+            if(dtos != null){
+                int i = 1;
+                for(BookSupplyNameAndQtyDto dto : dtos){
+                    if(i == 1){
+                        lblSupplierName1.setText(dto.getSupplierName());
+                        lblSupplierSupbQty1.setText(Integer.toString(dto.getQty()));
+                    }else if(i == 2){
+                        lblSupplierName2.setText(dto.getSupplierName());
+                        lblSupplierSupbQty2.setText(Integer.toString(dto.getQty()));
+                    } else if (i ==3) {
+                        lblSupplierName3.setText(dto.getSupplierName());
+                        lblSupplierSupbQty3.setText(Integer.toString(dto.getQty()));
+                    }
+                    i++;
                 }
-                i++;
             }
+
+        }catch (SQLException e1){
+            e1.printStackTrace();
+        }catch (ClassNotFoundException e2){
+            e2.printStackTrace();
         }
     }
 

@@ -2,7 +2,6 @@ package edu.ijse.gdse.libarymanagementsystem.dao.custom.Impl;
 
 import edu.ijse.gdse.libarymanagementsystem.dao.custom.MemberDAO;
 import edu.ijse.gdse.libarymanagementsystem.dto.MemberDto;
-import edu.ijse.gdse.libarymanagementsystem.dto.MemberPopularDto;
 import edu.ijse.gdse.libarymanagementsystem.entity.Member;
 import edu.ijse.gdse.libarymanagementsystem.entity.MemberPopular;
 import edu.ijse.gdse.libarymanagementsystem.util.CrudUtil;
@@ -12,7 +11,42 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MemberDAOimpl implements MemberDAO {
+
     //==========================
+    @Override
+    public ArrayList<String> getAllMemberIds() throws SQLException, ClassNotFoundException {
+        String sql = "select member_Id from Member";
+        ArrayList<String> dto = new ArrayList<>();
+        ResultSet res = CrudUtil.execute(sql);
+        while (res.next()){
+            String id = res.getString("member_Id");
+            dto.add(id);
+        }
+
+        return dto;
+    }
+
+    @Override
+    public Member getMemberDetails(String memId) throws SQLException, ClassNotFoundException {
+        String sql = "select * from Member where member_Id = ? ";
+        ResultSet res = CrudUtil.execute(
+                sql,
+                memId
+        );
+
+        if(res.next()){
+            Member member = new Member(
+                    res.getString("Member_Id"),
+                    res.getString("name"),
+                    res.getString("adress"),
+                    res.getString("email"),
+                    res.getString("contact_No")
+            );
+
+            return member;
+        }
+        return null;
+    }
 
     @Override
     public ArrayList<MemberPopular> getPopularMember() throws SQLException, ClassNotFoundException {
@@ -28,6 +62,32 @@ public class MemberDAOimpl implements MemberDAO {
             popMembers.add(member);
         }
         return popMembers;
+    }
+
+    @Override
+    public boolean isTheEmailAllreadyHave(String email) throws SQLException, ClassNotFoundException {
+        String sql = "select * from Member where email = ?";
+        ResultSet res = CrudUtil.execute(
+                sql,
+                email
+        );
+
+        if(res.next()){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean isThisEmail(String id, String email) throws SQLException, ClassNotFoundException {
+        String sql = "select email from Member where Member_id = ?";
+        ResultSet res = CrudUtil.execute(sql, id);
+        if(res.next()){
+            if(res.getString("email").equals(email)){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -80,6 +140,28 @@ public class MemberDAOimpl implements MemberDAO {
         return isSaved;
     }
 
+    @Override
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+        String sql = "delete from Member where Member_Id = ?";
+        boolean res = CrudUtil.execute(sql, id);
+        return res;
+    }
+
+    @Override
+    public boolean update(Member dto) throws SQLException, ClassNotFoundException {
+        String sql = "update Member set name = ?, adress = ?, email = ?, contact_No = ? where Member_Id = ?";
+        boolean res = CrudUtil.execute(
+                sql,
+                dto.getName(),
+                dto.getAddress(),
+                dto.getEmail(),
+                dto.getContact(),
+                dto.getMemberId()
+        );
+
+        return res;
+    }
+
     //==========================
 
     @Override
@@ -88,17 +170,7 @@ public class MemberDAOimpl implements MemberDAO {
     }
 
     @Override
-    public boolean update(Member dto) throws SQLException, ClassNotFoundException {
-        return false;
-    }
-
-    @Override
     public boolean exist(String id) throws SQLException, ClassNotFoundException {
-        return false;
-    }
-
-    @Override
-    public boolean delete(String id) throws SQLException, ClassNotFoundException {
         return false;
     }
 }

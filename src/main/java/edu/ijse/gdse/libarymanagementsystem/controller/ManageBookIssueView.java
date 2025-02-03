@@ -2,6 +2,7 @@ package edu.ijse.gdse.libarymanagementsystem.controller;
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.MemberBO;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.UserBO;
 import edu.ijse.gdse.libarymanagementsystem.db.DBConnection;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
@@ -114,7 +115,6 @@ public class ManageBookIssueView implements Initializable {
     @FXML
     private Button btnBookReturning;
 
-    private final MemberModel memberModel = new MemberModel();
     private final IssueModel issueModel = new IssueModel();
 
     private final ManageBookIssueModel manageBookIssueModel = new ManageBookIssueModel();
@@ -147,9 +147,15 @@ public class ManageBookIssueView implements Initializable {
     @FXML
     private TableView<IssueTableTm> tableIssue;
 
-    //======
+
+    //==============
     private UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
     BookBO bookBO = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
+    private MemberBO memberBO = (MemberBO) BOFactory.getInstance().getBO(BOFactory.BOType.MEMBER);
+
+    //===============
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //TEMP TABLE COLUMN INITIALIZING.....
@@ -194,7 +200,7 @@ public class ManageBookIssueView implements Initializable {
             for(IssueTableDto dto: dtos){
                 //GET EACH MEMBER ID
                 String memberId = dto.getMemId();
-                MemberDto newMemberDetails = memberModel.getMemberDetails(memberId);
+                MemberDto newMemberDetails = memberBO.getMemberDetails(memberId);
 
                 IssueTableTm issueTableTm = new IssueTableTm(
                         dto.getIssueId(),
@@ -268,7 +274,7 @@ public class ManageBookIssueView implements Initializable {
     private void loardMemberIds(){
         //HERE LOAD THE MEMBER IDS FOR COMBO BOX
         try{
-            ArrayList<String> dto = memberModel.getAllMemberIds();
+            ArrayList<String> dto = memberBO.getAllMemberIds();
             ObservableList<String> observableList= FXCollections.observableArrayList();
             for(String id : dto){
                 observableList.add(id);
@@ -320,7 +326,7 @@ public class ManageBookIssueView implements Initializable {
         //HERE LOAD THE MEMBER NAME TO LABEL
         try{
             String memId = comboMemberId.getValue();
-            memberDetails = memberModel.getMemberDetails(memId);
+            memberDetails = memberBO.getMemberDetails(memId);
             if(memberDetails != null){
                 lblMemName.setText(memId + " | " + memberDetails.getName());
                 lblMemberNameload.setText("Mr/Miss. " + memberDetails.getName());
