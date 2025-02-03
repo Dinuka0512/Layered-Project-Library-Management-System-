@@ -12,4 +12,5 @@ public interface UserDAO extends CrudDAO<User> {
     boolean isUniqueEmail(String email) throws SQLException, ClassNotFoundException;
     UserDto getUserDetails(String userEmail) throws SQLException, ClassNotFoundException;
     String getUserId(String email);
+    User checkEmail(String email) throws SQLException, ClassNotFoundException;
 }

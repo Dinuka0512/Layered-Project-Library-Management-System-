@@ -1,7 +1,9 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
+//FINISH
 
+import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.UserBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.UserDto;
-import edu.ijse.gdse.libarymanagementsystem.model.LogInModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,8 +20,9 @@ import java.sql.SQLException;
 
 public class LoginContro {
 
-    //create Login model object
-    private LogInModel logInModel = new LogInModel();
+    //===========
+    private UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
+    //===========
 
     @FXML
     private ImageView bgImageView;
@@ -47,7 +50,7 @@ public class LoginContro {
 
     @FXML
     void UserLogIn(ActionEvent event)throws ClassNotFoundException, SQLException , IOException{
-        dto = logInModel.checkEmail(txtEmail.getText());
+        dto = userBO.checkEmail(txtEmail.getText());
         if(dto != null){
             //HAVE THE USER
             if(dto.getEmail().equals(txtEmail.getText())){

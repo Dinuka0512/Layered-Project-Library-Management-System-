@@ -47,6 +47,25 @@ public class UserDAOImpl implements UserDAO {
         return null;
     }
 
+    @Override
+    public User checkEmail(String email) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM user WHERE email = ?";
+        ResultSet res = CrudUtil.execute(sql,email);
+        if(res.next()){
+            User dto = new User(
+                    res.getString("User_Id"),
+                    res.getString("name"),
+                    res.getString("address"),
+                    res.getString("password"),
+                    res.getString("email"),
+                    res.getString("Branch_Id")
+            );
+
+            return dto;
+        }
+        return null;
+    }
+
     //USER UNIQUE METHOD
     //HERE CHECK THE
 
