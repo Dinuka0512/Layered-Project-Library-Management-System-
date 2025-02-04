@@ -1,9 +1,10 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
 
+import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.AuthorBO;
 import edu.ijse.gdse.libarymanagementsystem.db.DBConnection;
 import edu.ijse.gdse.libarymanagementsystem.dto.AuthorDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.AuthorTm;
-import edu.ijse.gdse.libarymanagementsystem.model.AuthorModel;
 import edu.ijse.gdse.libarymanagementsystem.util.Validation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,8 +26,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.jar.JarException;
 
 public class ManageAuthorViewContro implements Initializable {
 
@@ -86,7 +85,10 @@ public class ManageAuthorViewContro implements Initializable {
     @FXML
     private TableView<AuthorTm> tableAuthor;
 
-    private final AuthorModel authorModel = new AuthorModel();
+    //==============
+    private AuthorBO authorBO = (AuthorBO) BOFactory.getInstance().getBO(BOFactory.BOType.AUTHOR);
+
+    //==============
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -124,7 +126,7 @@ public class ManageAuthorViewContro implements Initializable {
 
     private void loardTable(){
         try{
-            ArrayList<AuthorDto> dto = authorModel.getAllAuthorDetails();
+            ArrayList<AuthorDto> dto = authorBO.getAllAuthorDetails();
             ObservableList<AuthorTm> observableList = FXCollections.observableArrayList();
 
             /*INTO THE JAVAFX TABLE WE CAN ONLY ADD THE
@@ -160,7 +162,7 @@ public class ManageAuthorViewContro implements Initializable {
     private void loardNextAuthorId(){
         try{
             //HERE WE GET THE NEXT AUTHOR ID AND SET IT TO THE LABEL AUTHOR ID
-            String authorId = authorModel.genarateAuthorId();
+            String authorId = authorBO.genarateAuthorId();
             lblAuthorId.setText(authorId);
 
         }catch (ClassNotFoundException e1){
@@ -186,7 +188,7 @@ public class ManageAuthorViewContro implements Initializable {
             );
 
             try{
-                boolean isSaved = authorModel.saveNewAuthor(dto);
+                boolean isSaved = authorBO.saveNewAuthor(dto);
                 if(isSaved){
                     pageReset();
                     clearTexts();
@@ -232,22 +234,34 @@ public class ManageAuthorViewContro implements Initializable {
     }
 
     private boolean isvalidEmail(){
-        if(authorModel.isEmailUnique(txtEmail.getText(),lblAuthorId.getText())){
-            return true;
-        }else{
-            new Alert(Alert.AlertType.ERROR,"THIS EMAIL IS ALREADY HAVE \nSomething went wrong...").show();
-            return false;
+        try{
+            if(authorBO.isEmailUnique(txtEmail.getText(),lblAuthorId.getText())){
+                return true;
+            }else{
+                new Alert(Alert.AlertType.ERROR,"THIS EMAIL IS ALREADY HAVE \nSomething went wrong...").show();
+                return false;
+            }
+        }catch (Exception e1){
+            e1.printStackTrace();
         }
+
+        return false;
     }
 
     private boolean isvalidEmailForUpdate(){
-        if(authorModel.isEmailUnique(txtEmail.getText(), lblAuthorId.getText())){
-            //OWN EMAIL---> false
-            return true;
-        }else{
-            new Alert(Alert.AlertType.ERROR,"THIS EMAIL IS ALREADY HAVE \nSomething went wrong...").show();
-            return false;
+        try{
+            if(authorBO.isEmailUnique(txtEmail.getText(), lblAuthorId.getText())){
+                //OWN EMAIL---> false
+                return true;
+            }else{
+                new Alert(Alert.AlertType.ERROR,"THIS EMAIL IS ALREADY HAVE \nSomething went wrong...").show();
+                return false;
+            }
+        }catch (Exception e1){
+            e1.printStackTrace();
         }
+
+        return false;
     }
 
     private void clearTexts(){
@@ -311,7 +325,7 @@ public class ManageAuthorViewContro implements Initializable {
                         txtContact.getText()
                 );
 
-                boolean isUpdate = authorModel.updateAuthor(dto);
+                boolean isUpdate = authorBO.updateAuthor(dto);
                 if(isUpdate){
                     pageReset();
                     new Alert(Alert.AlertType.CONFIRMATION,"Author Updated!!").show();
@@ -335,7 +349,7 @@ public class ManageAuthorViewContro implements Initializable {
             Optional<ButtonType> optionalButtonType = alert.showAndWait();
 
             if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
-                boolean isDelete = authorModel.deleteAuthor(lblAuthorId.getText());
+                boolean isDelete = authorBO.deleteAuthor(lblAuthorId.getText());
                 if(isDelete){
                     new Alert(Alert.AlertType.CONFIRMATION, "Delete Author").show();
                     pageReset();

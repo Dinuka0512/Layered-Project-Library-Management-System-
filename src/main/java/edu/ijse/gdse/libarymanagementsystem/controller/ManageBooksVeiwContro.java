@@ -1,6 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.AuthorBO;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.*;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.BookTm;
@@ -181,7 +182,6 @@ public class ManageBooksVeiwContro implements Initializable {
     @FXML
     private TextField txtSearch;
 
-    private final AuthorModel authorModel = new AuthorModel();
     private final CategoryModel categoryModel = new CategoryModel();
     private final BookShelfModel bookShelfModel = new BookShelfModel();
     private final SectionModel sectionModel = new SectionModel();
@@ -190,7 +190,11 @@ public class ManageBooksVeiwContro implements Initializable {
     private final ManabeBooksViewModel manabeBooksViewModel = new ManabeBooksViewModel();
 
     //===========================
-    BookBO bookBo = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
+    private BookBO bookBo = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
+    private AuthorBO authorBO = (AuthorBO) BOFactory.getInstance().getBO(BOFactory.BOType.AUTHOR);
+
+    //===========================
+
 
     //HERE SAVE NEW SECTION
     @FXML
@@ -358,7 +362,7 @@ public class ManageBooksVeiwContro implements Initializable {
 
             try{
                 String categoryId = categoryModel.getCategoryId(bookTm.getCategoryName());
-                String authorId = authorModel.getAuthorIds(bookTm.getAuthorName());
+                String authorId = authorBO.getAuthorIds(bookTm.getAuthorName());
                 String bookShelfId = bookBo.getBookShelfId(bookTm.getBookId());
 //                BookSuplyDto supplyDto = bookSupplyModel.getAll(bookTm.getBookId());
 
@@ -436,7 +440,7 @@ public class ManageBooksVeiwContro implements Initializable {
 
                 String authorName;
                 if(authorId != null){
-                    authorName = authorModel.getAuthorName(authorId);
+                    authorName = authorBO.getAuthorName(authorId);
                 }else{
                     authorName = " - ";
                 }
@@ -513,7 +517,7 @@ public class ManageBooksVeiwContro implements Initializable {
         //WHEN WE SELECT AUTHOR ID FROM COMBO BOX PRINT NAME ON SCREEN
         try{
             if(comboAuthorId.getValue() != null){
-                String authorName = authorModel.getAuthorName(comboAuthorId.getValue());
+                String authorName = authorBO.getAuthorName(comboAuthorId.getValue());
                 lblAuthorName.setText(comboAuthorId.getValue() + " | " + authorName);
             }
         }catch (ClassNotFoundException e1){
@@ -584,11 +588,15 @@ public class ManageBooksVeiwContro implements Initializable {
 
     //SET THE AUTHOR IDS TO COMBO BOX
     private void loardAuthorIds(){
-        ArrayList<String> authorIds = authorModel.getAllAuthorIds();
-        if(authorIds != null){
-            ObservableList<String> observableList = FXCollections.observableArrayList();
-            observableList.addAll(authorIds);
-            comboAuthorId.setItems(observableList);
+        try{
+            ArrayList<String> authorIds = authorBO.getAllAuthorIds();
+            if(authorIds != null){
+                ObservableList<String> observableList = FXCollections.observableArrayList();
+                observableList.addAll(authorIds);
+                comboAuthorId.setItems(observableList);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -638,7 +646,7 @@ public class ManageBooksVeiwContro implements Initializable {
 
     private void loardNextAuthorId(){
         try{
-            String newID = authorModel.genarateAuthorId();
+            String newID = authorBO.genarateAuthorId();
             lblAuthorId.setText(newID);
         }catch (ClassNotFoundException e1){
             System.out.println("ClassNotFoundException");
@@ -734,7 +742,7 @@ public class ManageBooksVeiwContro implements Initializable {
         );
 
         try{
-            boolean res = authorModel.saveNewAuthor(authorDto);
+            boolean res = authorBO.saveNewAuthor(authorDto);
 
             if(res){
                 clearAuthorText();
