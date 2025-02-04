@@ -85,6 +85,6 @@ public class MemberBOimpl implements MemberBO {
     @Override
     public MemberDto getMemberDetails(String memId) throws SQLException, ClassNotFoundException {
         Member member = memberDAO.getMemberDetails(memId);
-        return new MemberDto(member.getMemberId(),member.getName(),member.getAddress(),member.getEmail(),member.getContact());
+        return (member == null)? null : new MemberDto(member.getMemberId(),member.getName(),member.getAddress(),member.getEmail(),member.getContact());
     }
 }

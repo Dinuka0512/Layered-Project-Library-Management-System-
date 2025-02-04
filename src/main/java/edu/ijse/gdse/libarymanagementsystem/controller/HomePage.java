@@ -5,9 +5,9 @@ import edu.ijse.gdse.libarymanagementsystem.bo.custom.*;
 import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.Barchart;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.BookIdAndQty;
-import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.Linechart;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookSupplyNameAndQtyDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.MemberPopularDto;
+import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.LineChartDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.UserDto;
 import edu.ijse.gdse.libarymanagementsystem.model.*;
 import edu.ijse.gdse.libarymanagementsystem.util.Validation;
@@ -149,12 +149,12 @@ public class HomePage implements Initializable {
     private Label lblSupplierSupbQty3;
 
     private static String userName;
-    private final IssueModel issueModel = new IssueModel();
     private final ReturnBookModel returnBookModel = new ReturnBookModel();
 
 
     //==============================
 
+    private IssueTableBO issueTableBO = (IssueTableBO) BOFactory.getInstance().getBO(BOFactory.BOType.ISSUE);
     private BookIssueBO bookIssueBO = (BookIssueBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOKISSUE);
     private MemberBO memberBO = (MemberBO) BOFactory.getInstance().getBO(BOFactory.BOType.MEMBER);
     private UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
@@ -242,9 +242,13 @@ public class HomePage implements Initializable {
     }
 
     private void todayBookIssues(){
-        int bookIssueCount = issueModel.getTodaYIssueBookCounts(date);
-        String bi = String.format("%02d", bookIssueCount);
-        lblTodayBi.setText(bi);
+        try{
+            int bookIssueCount = issueTableBO.getTodaYIssueBookCounts(date);
+            String bi = String.format("%02d", bookIssueCount);
+            lblTodayBi.setText(bi);
+        }catch(Exception e1){
+            e1.printStackTrace();
+        }
     }
 
     private void todayBookReturns(){
@@ -261,21 +265,27 @@ public class HomePage implements Initializable {
         XYChart.Series<String, Number> series2 = new XYChart.Series<>();
         series2.setName("Books Returned");
 
-        ArrayList<Linechart> lineChartsIssue = issueModel.getDataToAddLineChart();
-        ArrayList<Linechart> lineChartsReturn = returnBookModel.getDataToAddLineChart();
+        try{
+            ArrayList<LineChartDto> lineChartsIssue = issueTableBO.getDataToAddLineChart();
 
-        //ISSUES
-        for (Linechart linechart : lineChartsIssue) {
-            series1.getData().add(new XYChart.Data<>(linechart.getDate(), linechart.getCount()));
+//        ArrayList<LineChart> lineChartsReturn = returnBookModel.getDataToAddLineChart();
+
+            //ISSUES
+            for (LineChartDto linechart : lineChartsIssue) {
+                series1.getData().add(new XYChart.Data<>(linechart.getDate(), linechart.getCount()));
+            }
+
+//            //RETURNS
+//            for (Linechart linechart : lineChartsReturn) {
+//                series2.getData().add(new XYChart.Data<>(linechart.getDate(), linechart.getCount()));
+//            }
+
+            // Add data series to the StackedBarChart
+            lineBarChart.getData().addAll(series1, series2);
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
-
-        //RETURNS
-        for (Linechart linechart : lineChartsReturn) {
-            series2.getData().add(new XYChart.Data<>(linechart.getDate(), linechart.getCount()));
-        }
-
-        // Add data series to the StackedBarChart
-        lineBarChart.getData().addAll(series1, series2);
     }
 
     //EXIT BUTTON

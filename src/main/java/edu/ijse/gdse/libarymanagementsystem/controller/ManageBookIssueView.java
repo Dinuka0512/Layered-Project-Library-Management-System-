@@ -2,6 +2,7 @@ package edu.ijse.gdse.libarymanagementsystem.controller;
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.IssueTableBO;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.MemberBO;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.UserBO;
 import edu.ijse.gdse.libarymanagementsystem.db.DBConnection;
@@ -115,7 +116,6 @@ public class ManageBookIssueView implements Initializable {
     @FXML
     private Button btnBookReturning;
 
-    private final IssueModel issueModel = new IssueModel();
 
     private final ManageBookIssueModel manageBookIssueModel = new ManageBookIssueModel();
 
@@ -149,6 +149,7 @@ public class ManageBookIssueView implements Initializable {
 
 
     //==============
+    private IssueTableBO issueTableBO = (IssueTableBO) BOFactory.getInstance().getBO(BOFactory.BOType.ISSUE);
     private UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
     BookBO bookBO = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
     private MemberBO memberBO = (MemberBO) BOFactory.getInstance().getBO(BOFactory.BOType.MEMBER);
@@ -193,7 +194,7 @@ public class ManageBookIssueView implements Initializable {
     //LOAD ISSUE TABLE HERE
     private void loadIssueTable(){
         try{
-            ArrayList<IssueTableDto> dtos = issueModel.getAllData();
+            ArrayList<IssueTableDto> dtos = issueTableBO.getAllData();
             //CREATE THE TABLE MODEL TYPE ARRAY
             ArrayList<IssueTableTm> issueTableTms = new ArrayList<>();
 
@@ -242,7 +243,7 @@ public class ManageBookIssueView implements Initializable {
     //GENERATE NEXT IDS
     private void generateIssueId(){
         try{
-            String nextId = issueModel.getNextIssueId();
+            String nextId = issueTableBO.getNextIssueId();
             lblIssueId.setText(nextId);
         }catch (SQLException e1){
             System.out.println("SQL EXCeption");
@@ -325,15 +326,18 @@ public class ManageBookIssueView implements Initializable {
     void comboMemberNameLoad(ActionEvent event) {
         //HERE LOAD THE MEMBER NAME TO LABEL
         try{
-            String memId = comboMemberId.getValue();
-            memberDetails = memberBO.getMemberDetails(memId);
-            if(memberDetails != null){
-                lblMemName.setText(memId + " | " + memberDetails.getName());
-                lblMemberNameload.setText("Mr/Miss. " + memberDetails.getName());
-            }else{
-                lblMemName.setText("");
-                lblMemberNameload.setText("");
+            if(comboMemberId.getValue() != "" || comboMemberId.getValue() != null){
+                String memId = comboMemberId.getValue();
+                memberDetails = memberBO.getMemberDetails(memId);
 
+                if(memberDetails != null){
+                    lblMemName.setText(memId + " | " + memberDetails.getName());
+                    lblMemberNameload.setText("Mr/Miss. " + memberDetails.getName());
+                }else{
+                    lblMemName.setText("");
+                    lblMemberNameload.setText("");
+
+                }
             }
         }catch (SQLException e1){
             System.out.println("SQL EXCeption");
