@@ -1,9 +1,8 @@
 package edu.ijse.gdse.libarymanagementsystem.dao.custom.Impl;
 
 import edu.ijse.gdse.libarymanagementsystem.dao.custom.IssueTableDAO;
-import edu.ijse.gdse.libarymanagementsystem.dto.IssueTableDto;
 import edu.ijse.gdse.libarymanagementsystem.entity.IssueTable;
-import edu.ijse.gdse.libarymanagementsystem.entity.Linechart;
+import edu.ijse.gdse.libarymanagementsystem.entity.shortCuts.Linechart;
 import edu.ijse.gdse.libarymanagementsystem.util.CrudUtil;
 
 import java.sql.ResultSet;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 public class IssueTableDAOimpl implements IssueTableDAO {
     @Override
     public ArrayList<Linechart> getDataToAddLineChart() throws ClassNotFoundException, SQLException {
-        String sql = "select Date, count(*) as count  from Issue Group by Date";
+        String sql = "select i.date, count(bi.Book_Id) as count from Issue i JOIN book_issue bi on i.Issue_Id = bi.Issue_Id group by i.date";
         ResultSet res = CrudUtil.execute(sql);
 
         ArrayList<Linechart> linecharts = new ArrayList<>();

@@ -1,15 +1,15 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
+//=========FINISH
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.*;
-import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.Barchart;
+import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.BarchartDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.BookIdAndQty;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookSupplyNameAndQtyDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.MemberPopularDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.LineChartDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.UserDto;
-import edu.ijse.gdse.libarymanagementsystem.model.*;
 import edu.ijse.gdse.libarymanagementsystem.util.Validation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -149,11 +149,11 @@ public class HomePage implements Initializable {
     private Label lblSupplierSupbQty3;
 
     private static String userName;
-    private final ReturnBookModel returnBookModel = new ReturnBookModel();
 
 
     //==============================
 
+    private ReturnBookBO returnBookBO = (ReturnBookBO) BOFactory.getInstance().getBO(BOFactory.BOType.RETURNBOOK);
     private IssueTableBO issueTableBO = (IssueTableBO) BOFactory.getInstance().getBO(BOFactory.BOType.ISSUE);
     private BookIssueBO bookIssueBO = (BookIssueBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOKISSUE);
     private MemberBO memberBO = (MemberBO) BOFactory.getInstance().getBO(BOFactory.BOType.MEMBER);
@@ -224,21 +224,29 @@ public class HomePage implements Initializable {
     }
 
     private void loadPaymentBarchart(){
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName("Return Amounts");
+        try{
+            XYChart.Series<String, Number> series = new XYChart.Series<>();
+            series.setName("Return Amounts");
 
-        ArrayList<Barchart> data = returnBookModel.getBarchartValues();
+            ArrayList<BarchartDto> data = returnBookBO.getBarchartValues();
 
-        for (Barchart item : data) {
-            series.getData().add(new XYChart.Data<>(item.getDate(), item.getAmount()));
+            for (BarchartDto item : data) {
+                series.getData().add(new XYChart.Data<>(item.getDate(), item.getAmount()));
+            }
+
+            barchartPayments.getData().add(series);
+        }catch (Exception e){
+            e.printStackTrace();
         }
-
-        barchartPayments.getData().add(series);
     }
 
     private void setCashOnHand(){
-        int cashonHandToday = returnBookModel.getCashonHandToday(date);
-        lblCashOnHandTd.setText("Rs " + cashonHandToday + "/=");
+        try{
+            int cashonHandToday = returnBookBO.getCashonHandToday(date);
+            lblCashOnHandTd.setText("Rs " + cashonHandToday + "/=");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void todayBookIssues(){
@@ -252,9 +260,13 @@ public class HomePage implements Initializable {
     }
 
     private void todayBookReturns(){
-        int bookReturnCount = returnBookModel.getTodayBookReturns(date);
-        String br = String.format("%02d", bookReturnCount);
-        lblTodaybR.setText(br);
+        try{
+            int bookReturnCount = returnBookBO.getTodayBookReturns(date);
+            String br = String.format("%02d", bookReturnCount);
+            lblTodaybR.setText(br);
+        }catch (Exception e1){
+            e1.printStackTrace();
+        }
     }
 
     private void setUpBarChart() {
@@ -268,17 +280,17 @@ public class HomePage implements Initializable {
         try{
             ArrayList<LineChartDto> lineChartsIssue = issueTableBO.getDataToAddLineChart();
 
-//        ArrayList<LineChart> lineChartsReturn = returnBookModel.getDataToAddLineChart();
+            ArrayList<LineChartDto> lineChartsReturn = returnBookBO.getDataToAddLineChart();
 
             //ISSUES
             for (LineChartDto linechart : lineChartsIssue) {
                 series1.getData().add(new XYChart.Data<>(linechart.getDate(), linechart.getCount()));
             }
 
-//            //RETURNS
-//            for (Linechart linechart : lineChartsReturn) {
-//                series2.getData().add(new XYChart.Data<>(linechart.getDate(), linechart.getCount()));
-//            }
+            //RETURNS
+            for (LineChartDto linechart : lineChartsReturn) {
+                series2.getData().add(new XYChart.Data<>(linechart.getDate(), linechart.getCount()));
+            }
 
             // Add data series to the StackedBarChart
             lineBarChart.getData().addAll(series1, series2);

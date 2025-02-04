@@ -6,7 +6,7 @@ import edu.ijse.gdse.libarymanagementsystem.dao.custom.IssueTableDAO;
 import edu.ijse.gdse.libarymanagementsystem.dto.IssueTableDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.ShortCuts.LineChartDto;
 import edu.ijse.gdse.libarymanagementsystem.entity.IssueTable;
-import edu.ijse.gdse.libarymanagementsystem.entity.Linechart;
+import edu.ijse.gdse.libarymanagementsystem.entity.shortCuts.Linechart;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

@@ -3,11 +3,11 @@ package edu.ijse.gdse.libarymanagementsystem.controller;
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.MemberBO;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.ReturnBookBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.MemberDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.BookReturningTm;
 import edu.ijse.gdse.libarymanagementsystem.model.ManageBookReturningModel;
-import edu.ijse.gdse.libarymanagementsystem.model.ReturnBookModel;
 import edu.ijse.gdse.libarymanagementsystem.util.Gmail;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
-public class ManageBookReturning implements Initializable {
+public class ManageBookReturningConto implements Initializable {
 
     @FXML
     private Slider slider;
@@ -104,11 +104,11 @@ public class ManageBookReturning implements Initializable {
 
     @FXML
     private Label lblFullPayment;
-    private ReturnBookModel returnBookModel  = new ReturnBookModel();
 
 
 
     //=======
+    ReturnBookBO returnBookBO = (ReturnBookBO) BOFactory.getInstance().getBO(BOFactory.BOType.RETURNBOOK);
     private BookBO bookBO = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
     private MemberBO memberBO = (MemberBO) BOFactory.getInstance().getBO(BOFactory.BOType.MEMBER);
 
@@ -260,7 +260,8 @@ public class ManageBookReturning implements Initializable {
     void payNow(ActionEvent event) {
         if(tabelDetails != null){
             try{
-                boolean isSaved = manageBookReturningModel.returnBook(bookDetail, tabelDetails.getIssueID(), fee);
+                String returnId = returnBookBO.getBookRetunId();
+                boolean isSaved = manageBookReturningModel.returnBook(returnId, bookDetail, tabelDetails.getIssueID(), fee);
                 if(isSaved){
                     sendEmail();
                     new Alert(Alert.AlertType.CONFIRMATION,"Successful").show();

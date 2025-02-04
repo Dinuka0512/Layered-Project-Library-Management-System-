@@ -16,7 +16,8 @@ import java.util.ArrayList;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class ManageBookReturningModel {
-    private final ReturnBookModel returnBookModel = new ReturnBookModel();
+
+//    private final ReturnBookModel returnBookModel = new ReturnBookModel();
     public ArrayList<BookReturningTm> loadTabel() throws SQLException,ClassNotFoundException {
         String sql = "select i.Issue_Id, bi.Book_Id, m.Member_Id, m.name AS Member_Name, m.email, b.name AS Book_Name, i.Date, i.Time FROM Issue i JOIN Book_Issue bi ON i.Issue_Id = bi.Issue_Id JOIN Member m ON i.Member_Id = m.Member_Id JOIN Book b ON bi.Book_Id = b.Book_Id WHERE i.isCompleted = 0 ORDER BY i.Issue_Id;\n";
         ArrayList<BookReturningTm> bookReturningTms = new ArrayList<>();
@@ -42,7 +43,7 @@ public class ManageBookReturningModel {
 
 
 
-    public boolean returnBook(BookDto bookDetails, String issueId , double fee) throws SQLException, ClassNotFoundException {
+    public boolean returnBook(String id, BookDto bookDetails, String issueId , double fee) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getInstance().getConnection();
         try{
             con.setAutoCommit(false);
@@ -57,7 +58,6 @@ public class ManageBookReturningModel {
 
             if(isSupdated){
                 String date = String.valueOf(LocalDate.now());
-                String retunId = returnBookModel.getBookRetunId();
 
                 LocalTime now = LocalTime.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mma");
@@ -67,7 +67,7 @@ public class ManageBookReturningModel {
                 String bookReturningsql = "INSERT INTO return_Book VALUES (?,?,?,?,?,?)";
                 boolean isSaved = CrudUtil.execute(
                         bookReturningsql,
-                        retunId,
+                        id,
                         issueId,
                         1,
                         date,

@@ -5,7 +5,7 @@ import lombok.*;
 @Setter
 @Getter
 @ToString
-public class Barchart {
+public class BarchartDto {
     private String date;
     private double amount;
 }

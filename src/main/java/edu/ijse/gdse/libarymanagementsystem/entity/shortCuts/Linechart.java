@@ -1,4 +1,4 @@
-package edu.ijse.gdse.libarymanagementsystem.entity;
+package edu.ijse.gdse.libarymanagementsystem.entity.shortCuts;
 import lombok.*;
 
 @AllArgsConstructor

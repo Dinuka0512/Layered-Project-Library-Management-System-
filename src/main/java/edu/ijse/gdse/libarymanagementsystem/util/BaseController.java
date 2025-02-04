@@ -18,7 +18,7 @@ import java.io.IOException;
 public class BaseController {
 
     private Timeline inactivityTimer;
-    private static final int INACTIVITY_TIMEOUT = 10;
+    private static final int INACTIVITY_TIMEOUT = 30;
 
     public void initAutoLogout(Scene scene) {
         // Create a Timeline to monitor inactivity
