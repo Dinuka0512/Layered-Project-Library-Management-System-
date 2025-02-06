@@ -1,10 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
-import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
-import edu.ijse.gdse.libarymanagementsystem.bo.custom.IssueTableBO;
-import edu.ijse.gdse.libarymanagementsystem.bo.custom.MemberBO;
-import edu.ijse.gdse.libarymanagementsystem.bo.custom.UserBO;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.*;
 import edu.ijse.gdse.libarymanagementsystem.db.DBConnection;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.IssueTableDto;
@@ -117,13 +114,12 @@ public class ManageBookIssueView implements Initializable {
     private Button btnBookReturning;
 
 
-    private final ManageBookIssueModel manageBookIssueModel = new ManageBookIssueModel();
+//    private final ManageBookIssueModel manageBookIssueModel = new ManageBookIssueModel();
 
     private BookDto bookDetail = null;
     private MemberDto memberDetails = null;
     private ArrayList<TempBookIssueTm> tempBookIssuesArrayList = new ArrayList<>();
     private final int bookQtyCanGet = 5;
-
 
     //ISSUE TABLE
     @FXML
@@ -153,6 +149,7 @@ public class ManageBookIssueView implements Initializable {
     private UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
     BookBO bookBO = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
     private MemberBO memberBO = (MemberBO) BOFactory.getInstance().getBO(BOFactory.BOType.MEMBER);
+    private BookIssueBO bookIssueBO = (BookIssueBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOKISSUE);
 
     //===============
 
@@ -529,7 +526,7 @@ public class ManageBookIssueView implements Initializable {
         );
 
         try{
-            boolean isIssueCompleted = manageBookIssueModel.issueNow(
+            boolean isIssueCompleted = bookIssueBO.issueNow(
                     issueTableDto,
                     tempBookIssuesArrayList
             );
