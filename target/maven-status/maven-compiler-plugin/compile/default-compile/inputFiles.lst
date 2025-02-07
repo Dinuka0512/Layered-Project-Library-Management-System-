@@ -1,37 +1,125 @@
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\CreateAccountContro.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\DashBoardContro.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\HomePage.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\LoardingSceenView.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\LoginContro.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\ManageAuthorViewContro.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\ManageBookIssueView.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\ManageBooksVeiwContro.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\ManageMemberViewContro.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\db\DBConnection.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\AuthorDto.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\BookDto.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\BookshelfDto.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\CategoryDto.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\MemberDto.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\SectionDto.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\tm\AuthorTm.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\tm\BookTm.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\tm\MemberTm.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\UserDto.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\Main.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\AuthorBookModel.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\AuthorModel.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\BookCategoryModel.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\BookModel.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\BookShelfModel.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\BranchModel.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\CategoryModel.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\CreateAccountModel.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\LogInModel.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\ManabeBooksViewModel.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\MemberModel.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\SectionModel.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\UserModel.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\util\CrudUtil.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\util\Validation.java
-C:\Users\Welcome\OneDrive\Documents\IJSE Documents\Frist Semester Final Course Work\LibaryManagementSystem\src\main\java\module-info.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\BOFactory.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\AuthorBO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\BookBO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\BookIssueBO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\BookReturningBO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\BookSupplyBO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\BranchBO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\impl\AuthorBOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\impl\BookBOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\impl\BookIssueBOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\impl\BookReturningBOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\impl\BookSupplyBOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\impl\BranchBOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\impl\IssueTableBOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\impl\MemberBOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\impl\ReturnBookBOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\impl\UserBOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\IssueTableBO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\MemberBO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\ReturnBookBO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\custom\UserBO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\bo\SuperBO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\CreateAccountContro.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\DashBoardContro.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\HomePage.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\LoardingSceenView.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\LoginContro.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\ManageAuthorViewContro.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\ManageBookIssueView.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\ManageBookReturningConto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\ManageBooksVeiwContro.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\ManageEmployeesConto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\ManageMemberViewContro.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\controller\ManageSuppliersView.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\CrudDAO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\AuthorDAO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\BookDAO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\BookIssueDAO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\BookReturningDAO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\BookSupplyDAO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\BranchDAO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\Impl\AuthorDAOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\Impl\BookDAOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\Impl\BookIssueDAOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\Impl\BookReturningDAOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\Impl\BookSupplyDAOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\Impl\BranchDAOImpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\Impl\IssueTableDAOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\Impl\MemberDAOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\Impl\ReturnBookDAOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\Impl\ReturningQuereeDAOimpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\Impl\UserDAOImpl.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\IssueTableDAO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\MemberDAO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\ReturnBookDAO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\ReturningQuereeDAO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\custom\UserDAO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\DAOFactory.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dao\SuperDAO.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\db\DBConnection.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\AuthorDto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\BookDto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\BookshelfDto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\BookSuplyDto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\BookSupplyNameAndQtyDto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\BranchDto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\CategoryDto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\IssueTableDto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\MemberDto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\MemberPopularDto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\SectionDto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\ShortCuts\BarchartDto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\ShortCuts\BookIdAndQty.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\ShortCuts\LineChartDto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\SupplierDto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\tm\AuthorTm.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\tm\BookReturningTm.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\tm\BookTm.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\tm\IssueTableTm.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\tm\MemberTm.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\tm\SupplierTm.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\tm\TempBookIssueTm.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\tm\TempBookTM.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\dto\UserDto.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\Author.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\Book.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\BookIdAndQty.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\Bookshelf.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\BookSuply.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\BookSupplyNameAndQty.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\Branch.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\Category.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\IssueTable.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\Member.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\MemberPopular.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\Section.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\shortCuts\Barchart.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\shortCuts\Linechart.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\Supplier.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\tm\AuthorTmEnt.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\tm\BookReturningTmEnt.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\tm\BookTmEnt.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\tm\IssueTableTmEnt.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\tm\MemberTmEnt.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\tm\SupplierTmEnt.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\tm\TempBookIssueTmEnt.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\tm\TempBookTmEnt.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\entity\User.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\Main.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\AuthorBookModel.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\BookCategoryModel.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\BookShelfModel.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\BranchModel.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\CategoryModel.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\CreateAccountModel.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\ManabeBooksViewModel.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\ManageBookReturningModel.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\ManageSupplierModel.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\SectionModel.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\model\SupplierModel.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\util\BaseController.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\util\CrudUtil.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\util\Gmail.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\edu\ijse\gdse\libarymanagementsystem\util\Validation.java
+C:\Users\Welcome\OneDrive\Documents\IJSE Documents\SECOND SEMESTER\AAD\LibaryManagementSystem\src\main\java\module-info.java

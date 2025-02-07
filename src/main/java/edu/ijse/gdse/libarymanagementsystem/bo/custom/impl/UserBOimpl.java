@@ -32,7 +32,7 @@ public class UserBOimpl implements UserBO {
     @Override
     public UserDto checkEmail(String email) throws SQLException, ClassNotFoundException {
         User user = userDAO.checkEmail(email);
-        return new UserDto(user.getUserId(),user.getName(),user.getAddress(),user.getPassword(),user.getEmail());
+        return (user != null)?  new UserDto(user.getUserId(),user.getName(),user.getAddress(),user.getPassword(),user.getEmail()) : null;
     }
 
     @Override

@@ -1,4 +1,5 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
+//--->FINISH
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.*;
@@ -8,7 +9,6 @@ import edu.ijse.gdse.libarymanagementsystem.dto.IssueTableDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.MemberDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.IssueTableTm;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.TempBookIssueTm;
-import edu.ijse.gdse.libarymanagementsystem.model.*;
 import edu.ijse.gdse.libarymanagementsystem.util.Gmail;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -109,13 +109,8 @@ public class ManageBookIssueView implements Initializable {
 
     @FXML
     private Button btnBookIssuing;
-
     @FXML
     private Button btnBookReturning;
-
-
-//    private final ManageBookIssueModel manageBookIssueModel = new ManageBookIssueModel();
-
     private BookDto bookDetail = null;
     private MemberDto memberDetails = null;
     private ArrayList<TempBookIssueTm> tempBookIssuesArrayList = new ArrayList<>();

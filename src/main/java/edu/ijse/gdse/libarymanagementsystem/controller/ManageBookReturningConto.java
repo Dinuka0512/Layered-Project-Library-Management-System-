@@ -2,6 +2,7 @@ package edu.ijse.gdse.libarymanagementsystem.controller;
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookReturningBO;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.MemberBO;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.ReturnBookBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
@@ -108,6 +109,7 @@ public class ManageBookReturningConto implements Initializable {
 
 
     //=======
+    BookReturningBO bookReturningBO = (BookReturningBO)BOFactory.getInstance().getBO(BOFactory.BOType.RETURNINGBOOK);
     ReturnBookBO returnBookBO = (ReturnBookBO) BOFactory.getInstance().getBO(BOFactory.BOType.RETURNBOOK);
     private BookBO bookBO = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
     private MemberBO memberBO = (MemberBO) BOFactory.getInstance().getBO(BOFactory.BOType.MEMBER);
@@ -148,7 +150,6 @@ public class ManageBookReturningConto implements Initializable {
 
         //SET DAMAGE SIZE
         slider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            String text;
             if(newValue.intValue() == 0){
                 lblDamageSize.setTextFill(Color.GREEN);
             }else{
@@ -168,7 +169,7 @@ public class ManageBookReturningConto implements Initializable {
 
     private void bookReturningTableLoad(){
         try{
-            ArrayList<BookReturningTm> res = manageBookReturningModel.loadTabel();
+            ArrayList<BookReturningTm> res = bookReturningBO.loadTabel();
             ObservableList<BookReturningTm> observableList = FXCollections.observableArrayList();
             for(BookReturningTm dto : res){
                 observableList.add(dto);
@@ -199,16 +200,18 @@ public class ManageBookReturningConto implements Initializable {
                 lblIssueDate.setText(tabelDetails.getIssueDate());
 
                 daysLate = getDaysBetween(LocalDate.parse(tabelDetails.getIssueDate()), LocalDate.now());
+                System.out.println(daysLate);
                 String text;
                 if (daysLate >= 0) {
                     lblLateDates.setTextFill(Color.GREEN);
                     text = "Have More " + daysLate + " Days";
+
                 } else {
                     lblLateDates.setTextFill(Color.RED);
                     text = "Late " + daysLate * (-1) + " Days";
                 }
                 lblLateDates.setText(text);
-
+                loadBookDamagePrice((int) slider.getValue());
             }
         }catch (SQLException e1){
             System.out.println("SQL Exception");
@@ -233,8 +236,6 @@ public class ManageBookReturningConto implements Initializable {
     }
 
     private void loadBookDamagePrice(int damageValue){
-
-
         if(tabelDetails != null){
             if(slider.getValue() != 0){
                 //THERE HAVE DAMAGE
@@ -247,7 +248,7 @@ public class ManageBookReturningConto implements Initializable {
         }
 
         fee = feeLateFee + damageFee;
-
+        System.out.println(fee);
         // Create a DecimalFormat instance with the desired format
         DecimalFormat df = new DecimalFormat("#.00");
         // Format the number
