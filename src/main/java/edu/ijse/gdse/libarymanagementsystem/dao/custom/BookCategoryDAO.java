@@ -1,4 +1,4 @@
-package edu.ijse.gdse.libarymanagementsystem.dao.custom.Impl;
+package edu.ijse.gdse.libarymanagementsystem.dao.custom;
 
 import edu.ijse.gdse.libarymanagementsystem.dao.SuperDAO;
 

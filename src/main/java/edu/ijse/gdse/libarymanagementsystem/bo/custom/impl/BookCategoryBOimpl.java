@@ -1,9 +1,8 @@
 package edu.ijse.gdse.libarymanagementsystem.bo.custom.impl;
 
-import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookCategoryBO;
 import edu.ijse.gdse.libarymanagementsystem.dao.DAOFactory;
-import edu.ijse.gdse.libarymanagementsystem.dao.custom.Impl.BookCategoryDAO;
+import edu.ijse.gdse.libarymanagementsystem.dao.custom.BookCategoryDAO;
 
 import java.sql.SQLException;
 

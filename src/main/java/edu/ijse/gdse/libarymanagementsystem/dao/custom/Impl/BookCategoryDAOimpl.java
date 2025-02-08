@@ -1,6 +1,6 @@
 package edu.ijse.gdse.libarymanagementsystem.dao.custom.Impl;
 
-import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookCategoryBO;
+import edu.ijse.gdse.libarymanagementsystem.dao.custom.BookCategoryDAO;
 import edu.ijse.gdse.libarymanagementsystem.util.CrudUtil;
 
 import java.sql.ResultSet;

@@ -1,10 +1,7 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
-import edu.ijse.gdse.libarymanagementsystem.bo.custom.AuthorBO;
-import edu.ijse.gdse.libarymanagementsystem.bo.custom.AuthorBookBO;
-import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
-import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookCategoryBO;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.*;
 import edu.ijse.gdse.libarymanagementsystem.dto.*;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.BookTm;
 import edu.ijse.gdse.libarymanagementsystem.model.*;
@@ -183,14 +180,13 @@ public class ManageBooksVeiwContro implements Initializable {
 
     @FXML
     private TextField txtSearch;
-
-    private final CategoryModel categoryModel = new CategoryModel();
     private final BookShelfModel bookShelfModel = new BookShelfModel();
     private final SectionModel sectionModel = new SectionModel();
     private final ManabeBooksViewModel manabeBooksViewModel = new ManabeBooksViewModel();
 
     //===========================
-    BookCategoryBO bookCategoryBO = (BookCategoryBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOKCATEGORY);
+    private CategoryBO categoryBO = (CategoryBO) BOFactory.getInstance().getBO(BOFactory.BOType.CATEGORY);
+    private BookCategoryBO bookCategoryBO = (BookCategoryBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOKCATEGORY);
     private AuthorBookBO authorBookBO = (AuthorBookBO)BOFactory.getInstance().getBO(BOFactory.BOType.AUTHORBOOK);
     private BookBO bookBo = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
     private AuthorBO authorBO = (AuthorBO) BOFactory.getInstance().getBO(BOFactory.BOType.AUTHOR);
@@ -363,7 +359,7 @@ public class ManageBooksVeiwContro implements Initializable {
             txtBookPrice.setText(Double.toString(bookTm.getPrice()));
 
             try{
-                String categoryId = categoryModel.getCategoryId(bookTm.getCategoryName());
+                String categoryId = categoryBO.getCategoryId(bookTm.getCategoryName());
                 String authorId = authorBO.getAuthorIds(bookTm.getAuthorName());
                 String bookShelfId = bookBo.getBookShelfId(bookTm.getBookId());
 //                BookSuplyDto supplyDto = bookSupplyModel.getAll(bookTm.getBookId());
@@ -452,7 +448,7 @@ public class ManageBooksVeiwContro implements Initializable {
 
                 String categoryName;
                 if(categoryId != null){
-                    categoryName = categoryModel.getCateName(categoryId);
+                    categoryName = categoryBO.getCateName(categoryId);
                 }else{
                     categoryName = " - ";
                 }
@@ -495,14 +491,12 @@ public class ManageBooksVeiwContro implements Initializable {
 
     }
 
-
-
     @FXML
     void comboCategoryId(ActionEvent event) {
         //WHEN WE SELECT CATEGORY ID FROM COMBO BOX PRINT NAME ON SCREEN
         try{
             if(comboCategoryId.getValue() != null){
-                String cateName = categoryModel.getCateName(comboCategoryId.getValue());
+                String cateName = categoryBO.getCateName(comboCategoryId.getValue());
                 lblCategoryName.setText(comboCategoryId.getValue() + " | " + cateName);
             }
         }catch (ClassNotFoundException e1){
@@ -604,11 +598,15 @@ public class ManageBooksVeiwContro implements Initializable {
 
     //SET THE CATEGORY IDS TO COMBO BOX
     private void loardCategoryIds(){
-        ArrayList<String> categoryId = categoryModel.getAllCategoryIds();
-        if(categoryId != null){
-            ObservableList<String> observableList = FXCollections.observableArrayList();
-            observableList.addAll(categoryId);
-            comboCategoryId.setItems(observableList);
+        try{
+            ArrayList<String> categoryId = categoryBO.getAllCategoryIds();
+            if(categoryId != null){
+                ObservableList<String> observableList = FXCollections.observableArrayList();
+                observableList.addAll(categoryId);
+                comboCategoryId.setItems(observableList);
+            }
+        }catch (Exception e1){
+            e1.printStackTrace();
         }
     }
 
@@ -661,7 +659,7 @@ public class ManageBooksVeiwContro implements Initializable {
 
     private void loardNextCategoryId(){
         try{
-            String newID = categoryModel.generateCategoryID();
+            String newID = categoryBO.generateCategoryID();
             lblCategoryId.setText(newID);
         }catch (ClassNotFoundException e1){
             System.out.println("ClassNotFoundException");
@@ -795,12 +793,13 @@ public class ManageBooksVeiwContro implements Initializable {
         );
 
         try{
-            boolean isSaved = categoryModel.saveNewCategory(categoryDto);
+            boolean isSaved = categoryBO.saveNewCategory(categoryDto);
             if(isSaved){
+                new Alert(Alert.AlertType.CONFIRMATION,"Category Successfuly saved").show();
                 clearCategoryText();
+                clearAllTexts();
                 pageReset();
                 pageFormat();
-                new Alert(Alert.AlertType.CONFIRMATION,"Category Successfuly saved").show();
                 anchorAddCategory.setVisible(false);
             }else{
                 new Alert(Alert.AlertType.ERROR,"Category Saving Failed").show();
