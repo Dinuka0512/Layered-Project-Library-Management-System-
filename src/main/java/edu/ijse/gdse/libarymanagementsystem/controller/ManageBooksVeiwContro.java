@@ -4,6 +4,7 @@ import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.AuthorBO;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.AuthorBookBO;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookCategoryBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.*;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.BookTm;
 import edu.ijse.gdse.libarymanagementsystem.model.*;
@@ -186,10 +187,10 @@ public class ManageBooksVeiwContro implements Initializable {
     private final CategoryModel categoryModel = new CategoryModel();
     private final BookShelfModel bookShelfModel = new BookShelfModel();
     private final SectionModel sectionModel = new SectionModel();
-    private final BookCategoryModel bookCategoryModel = new BookCategoryModel();
     private final ManabeBooksViewModel manabeBooksViewModel = new ManabeBooksViewModel();
 
     //===========================
+    BookCategoryBO bookCategoryBO = (BookCategoryBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOKCATEGORY);
     private AuthorBookBO authorBookBO = (AuthorBookBO)BOFactory.getInstance().getBO(BOFactory.BOType.AUTHORBOOK);
     private BookBO bookBo = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
     private AuthorBO authorBO = (AuthorBO) BOFactory.getInstance().getBO(BOFactory.BOType.AUTHOR);
@@ -447,7 +448,7 @@ public class ManageBooksVeiwContro implements Initializable {
                 }
 
                 //GET THE CATEGORY NAME
-                String categoryId = bookCategoryModel.getCategoryId(dto.getBookId());
+                String categoryId = bookCategoryBO.getCategoryId(dto.getBookId());
 
                 String categoryName;
                 if(categoryId != null){
