@@ -180,11 +180,11 @@ public class ManageBooksVeiwContro implements Initializable {
 
     @FXML
     private TextField txtSearch;
-    private final BookShelfModel bookShelfModel = new BookShelfModel();
     private final SectionModel sectionModel = new SectionModel();
     private final ManabeBooksViewModel manabeBooksViewModel = new ManabeBooksViewModel();
 
     //===========================
+    private BookshelfBO bookshelfBO = (BookshelfBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOKSHELF);
     private CategoryBO categoryBO = (CategoryBO) BOFactory.getInstance().getBO(BOFactory.BOType.CATEGORY);
     private BookCategoryBO bookCategoryBO = (BookCategoryBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOKCATEGORY);
     private AuthorBookBO authorBookBO = (AuthorBookBO)BOFactory.getInstance().getBO(BOFactory.BOType.AUTHORBOOK);
@@ -261,7 +261,7 @@ public class ManageBooksVeiwContro implements Initializable {
         );
 
         try{
-            boolean isSaved = bookShelfModel.saveBokShelf(bookshelfDto);
+            boolean isSaved = bookshelfBO.saveBokShelf(bookshelfDto);
             if(isSaved){
                 clearTextInBookshelf();
                 pageFormat();
@@ -530,7 +530,7 @@ public class ManageBooksVeiwContro implements Initializable {
         //WHEN WE SELECT BookShelf ID FROM COMBO BOX PRINT NAME ON SCREEN
         try{
             if(comboBookShelfId.getValue() != null){
-                String bookShelfLocation = bookShelfModel.getBookShelfLocation(comboBookShelfId.getValue());
+                String bookShelfLocation = bookshelfBO.getBookShelfLocation(comboBookShelfId.getValue());
                 lblBookShelfName.setText(comboBookShelfId.getValue() + " | " + bookShelfLocation);
             }
         }catch (ClassNotFoundException e1){
@@ -611,11 +611,15 @@ public class ManageBooksVeiwContro implements Initializable {
     }
 
     private void loardBookShelfIds(){
-        ArrayList<String> bookshelfId = bookShelfModel.getAllBookShelfIds();
-        if(bookshelfId != null){
-            ObservableList<String> observableList = FXCollections.observableArrayList();
-            observableList.addAll(bookshelfId);
-            comboBookShelfId.setItems(observableList);
+        try {
+            ArrayList<String> bookshelfId = bookshelfBO.getAllBookShelfIds();
+            if(bookshelfId != null){
+                ObservableList<String> observableList = FXCollections.observableArrayList();
+                observableList.addAll(bookshelfId);
+                comboBookShelfId.setItems(observableList);
+            }
+        }catch (Exception e1) {
+            e1.printStackTrace();
         }
     }
 
@@ -672,7 +676,7 @@ public class ManageBooksVeiwContro implements Initializable {
 
     private void loardNextBookShelfId(){
         try{
-            String id = bookShelfModel.generateNextId();
+            String id = bookshelfBO.generateNextId();
             lblBookShelfId.setText(id);
         }catch (ClassNotFoundException e1){
             System.out.println("ClassNotFoundException");
