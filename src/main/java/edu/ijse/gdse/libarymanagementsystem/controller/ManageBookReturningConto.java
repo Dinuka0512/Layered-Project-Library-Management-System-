@@ -200,7 +200,6 @@ public class ManageBookReturningConto implements Initializable {
                 lblIssueDate.setText(tabelDetails.getIssueDate());
 
                 daysLate = getDaysBetween(LocalDate.parse(tabelDetails.getIssueDate()), LocalDate.now());
-                System.out.println(daysLate);
                 String text;
                 if (daysLate >= 0) {
                     lblLateDates.setTextFill(Color.GREEN);
@@ -244,11 +243,12 @@ public class ManageBookReturningConto implements Initializable {
             if(daysLate < 0){
                 //HAVE BOOK LATE
                 feeLateFee = (daysLate * -1) * lateFeeforOneDay;
+            }else{
+                feeLateFee = 0;
             }
         }
 
         fee = feeLateFee + damageFee;
-        System.out.println(fee);
         // Create a DecimalFormat instance with the desired format
         DecimalFormat df = new DecimalFormat("#.00");
         // Format the number
