@@ -181,7 +181,6 @@ public class ManageBooksVeiwContro implements Initializable {
     @FXML
     private TextField txtSearch;
     private final SectionModel sectionModel = new SectionModel();
-    private final ManabeBooksViewModel manabeBooksViewModel = new ManabeBooksViewModel();
 
     //===========================
     private BookshelfBO bookshelfBO = (BookshelfBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOKSHELF);
@@ -883,7 +882,7 @@ public class ManageBooksVeiwContro implements Initializable {
 
         try{
 
-            String res = manabeBooksViewModel.saveNewBook(
+            String res = bookBo.saveNewBook(
                     bookDto,
                     comboAuthorId.getValue(),
                     comboCategoryId.getValue()
@@ -986,7 +985,7 @@ public class ManageBooksVeiwContro implements Initializable {
         );
 
         try{
-            boolean isUpdate = manabeBooksViewModel.updateBook(dto,comboBookShelfId.getValue(), comboCategoryId.getValue(), comboAuthorId.getValue());
+            boolean isUpdate = bookBo.updateBook(dto,comboBookShelfId.getValue(), comboCategoryId.getValue(), comboAuthorId.getValue());
             if(isUpdate){
                 clearAllTexts();
                 pageReset();
