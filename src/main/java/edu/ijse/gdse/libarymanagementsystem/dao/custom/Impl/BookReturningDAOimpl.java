@@ -1,11 +1,12 @@
 package edu.ijse.gdse.libarymanagementsystem.dao.custom.Impl;
 
-import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookReturningBO;
 import edu.ijse.gdse.libarymanagementsystem.dao.custom.BookReturningDAO;
-import edu.ijse.gdse.libarymanagementsystem.dto.tm.BookReturningTm;
+import edu.ijse.gdse.libarymanagementsystem.db.DBConnection;
 import edu.ijse.gdse.libarymanagementsystem.entity.tm.BookReturningTmEnt;
+import edu.ijse.gdse.libarymanagementsystem.entity.tm.ReturnBookQueree;
 import edu.ijse.gdse.libarymanagementsystem.util.CrudUtil;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -34,5 +35,53 @@ public class BookReturningDAOimpl implements BookReturningDAO {
         }
 
         return bookReturningTms;
+    }
+
+    @Override
+    public boolean returnBook(ReturnBookQueree returnBookQueree) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getInstance().getConnection();
+        try{
+            con.setAutoCommit(false);
+
+            //UPDATE BOOK RETURNING
+            String updateSql = "UPDATE Issue i JOIN Book_Issue bi ON i.Issue_Id = bi.Issue_Id SET i.isCompleted = true WHERE i.Issue_Id = ? AND bi.Book_Id = ?";
+            boolean isSupdated = CrudUtil.execute(
+                    updateSql,
+                    returnBookQueree.getIssueId(),
+                    returnBookQueree.getBookId()
+            );
+
+            if(isSupdated){
+                //NOW NEED TO BOOK RETURNING TABLE INSERT
+                String bookReturningsql = "INSERT INTO return_Book VALUES (?,?,?,?,?,?)";
+                boolean isSaved = CrudUtil.execute(
+                        bookReturningsql,
+                        returnBookQueree.getId(),
+                        returnBookQueree.getIssueId(),
+                        1,
+                        returnBookQueree.getDate(),
+                        returnBookQueree.getFormattedTime(),
+                        returnBookQueree.getFee()
+                );
+
+                if(isSaved){
+                    String updateBook = " update book set qty = qty+1 where Book_Id = ?";
+                    boolean isUpdated = CrudUtil.execute(updateBook,returnBookQueree.getBookId());
+                    if(isUpdated){
+                        con.commit();
+                        return true;
+                    }
+                }
+            }
+            return false;
+
+        }catch (Exception e){
+            con.rollback();
+            System.out.println("Somthing Went wrong");
+            e.printStackTrace();
+            return false;
+        }finally {
+            con.setAutoCommit(true);
+        }
     }
 }

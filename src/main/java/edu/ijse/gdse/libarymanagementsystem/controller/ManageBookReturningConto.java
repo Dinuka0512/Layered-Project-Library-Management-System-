@@ -1,4 +1,6 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
+//--->> FINISHED
+
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
@@ -8,7 +10,6 @@ import edu.ijse.gdse.libarymanagementsystem.bo.custom.ReturnBookBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.MemberDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.BookReturningTm;
-import edu.ijse.gdse.libarymanagementsystem.model.ManageBookReturningModel;
 import edu.ijse.gdse.libarymanagementsystem.util.Gmail;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -91,8 +92,6 @@ public class ManageBookReturningConto implements Initializable {
 
     @FXML
     private TableColumn<BookReturningTm, String> columnMemName;
-    private final ManageBookReturningModel manageBookReturningModel = new ManageBookReturningModel();
-
     private BookReturningTm tabelDetails;
     private long daysLate;
 
@@ -262,7 +261,7 @@ public class ManageBookReturningConto implements Initializable {
         if(tabelDetails != null){
             try{
                 String returnId = returnBookBO.getBookRetunId();
-                boolean isSaved = manageBookReturningModel.returnBook(returnId, bookDetail, tabelDetails.getIssueID(), fee);
+                boolean isSaved = bookReturningBO.returnBook(returnId, bookDetail, tabelDetails.getIssueID(), fee);
                 if(isSaved){
                     sendEmail();
                     new Alert(Alert.AlertType.CONFIRMATION,"Successful").show();
