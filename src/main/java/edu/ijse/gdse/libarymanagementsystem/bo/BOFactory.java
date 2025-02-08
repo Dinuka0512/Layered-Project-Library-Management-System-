@@ -16,7 +16,7 @@ public class BOFactory {
     }
 
     public enum BOType{
-        BRANCH,USER,BOOK,MEMBER,BOOKSUPPLY,BOOKISSUE,ISSUE,RETURNBOOK,AUTHOR,RETURNINGBOOK
+        BRANCH,USER,BOOK,MEMBER,BOOKSUPPLY,BOOKISSUE,ISSUE,RETURNBOOK,AUTHOR,RETURNINGBOOK,AUTHORBOOK
     }
 
     public SuperBO getBO(BOType type){
@@ -50,6 +50,9 @@ public class BOFactory {
             }
             case RETURNINGBOOK -> {
                 return new BookReturningBOimpl();
+            }
+            case AUTHORBOOK -> {
+                return new AuthorBookBOimpl();
             }
             default -> {
                 return null;

@@ -70,4 +70,5 @@ public class AuthorBOimpl implements AuthorBO {
     public boolean isEmailUnique(String email, String id) throws SQLException, ClassNotFoundException {
         return authorDAO.isEmailUnique(email,id);
     }
+
 }

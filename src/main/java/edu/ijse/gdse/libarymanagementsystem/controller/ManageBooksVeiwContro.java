@@ -2,6 +2,7 @@ package edu.ijse.gdse.libarymanagementsystem.controller;
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.AuthorBO;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.AuthorBookBO;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.*;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.BookTm;
@@ -185,11 +186,11 @@ public class ManageBooksVeiwContro implements Initializable {
     private final CategoryModel categoryModel = new CategoryModel();
     private final BookShelfModel bookShelfModel = new BookShelfModel();
     private final SectionModel sectionModel = new SectionModel();
-    private final AuthorBookModel authorBookModel = new AuthorBookModel();
     private final BookCategoryModel bookCategoryModel = new BookCategoryModel();
     private final ManabeBooksViewModel manabeBooksViewModel = new ManabeBooksViewModel();
 
     //===========================
+    private AuthorBookBO authorBookBO = (AuthorBookBO)BOFactory.getInstance().getBO(BOFactory.BOType.AUTHORBOOK);
     private BookBO bookBo = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
     private AuthorBO authorBO = (AuthorBO) BOFactory.getInstance().getBO(BOFactory.BOType.AUTHOR);
 
@@ -436,7 +437,7 @@ public class ManageBooksVeiwContro implements Initializable {
 
             for(BookDto dto : res){
                 //GET THE AUTHOR NAME
-                String authorId = authorBookModel.getAuthorId(dto.getBookId());
+                String authorId = authorBookBO.getAuthorId(dto.getBookId());
 
                 String authorName;
                 if(authorId != null){
