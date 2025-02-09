@@ -1,4 +1,6 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
+//---->>>FINISHED
+
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.*;
@@ -180,9 +182,9 @@ public class ManageBooksVeiwContro implements Initializable {
 
     @FXML
     private TextField txtSearch;
-    private final SectionModel sectionModel = new SectionModel();
 
     //===========================
+    private SectionBO sectionBO = (SectionBO) BOFactory.getInstance().getBO(BOFactory.BOType.SECTION);
     private BookshelfBO bookshelfBO = (BookshelfBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOKSHELF);
     private CategoryBO categoryBO = (CategoryBO) BOFactory.getInstance().getBO(BOFactory.BOType.CATEGORY);
     private BookCategoryBO bookCategoryBO = (BookCategoryBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOKCATEGORY);
@@ -214,7 +216,7 @@ public class ManageBooksVeiwContro implements Initializable {
         );
 
         try{
-            boolean isSaved = sectionModel.saveSection(sectionDto);
+            boolean isSaved = sectionBO.saveSection(sectionDto);
             if(isSaved){
                 pageReset();
                 clearTextInSection();
@@ -546,7 +548,7 @@ public class ManageBooksVeiwContro implements Initializable {
         //WHEN WE SELECT SectionId ID FROM COMBO BOX PRINT NAME ON SCREEN
         try{
             if(comboSectionId.getValue() != null){
-                String sectionName = sectionModel.getSectionName(comboSectionId.getValue());
+                String sectionName = sectionBO.getSectionName(comboSectionId.getValue());
                 lblSectionName.setText(comboSectionId.getValue() + " | " + sectionName);
             }
         }catch (ClassNotFoundException e1){
@@ -623,11 +625,15 @@ public class ManageBooksVeiwContro implements Initializable {
     }
 
     private void loadSectionId(){
-        ArrayList<String> sectionIds = sectionModel.getAllSectionIds();
-        if(sectionIds != null){
-            ObservableList<String> observableList = FXCollections.observableArrayList();
-            observableList.addAll(sectionIds);
-            comboSectionId.setItems(observableList);
+        try{
+            ArrayList<String> sectionIds = sectionBO.getAllSectionIds();
+            if(sectionIds != null){
+                ObservableList<String> observableList = FXCollections.observableArrayList();
+                observableList.addAll(sectionIds);
+                comboSectionId.setItems(observableList);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -688,7 +694,7 @@ public class ManageBooksVeiwContro implements Initializable {
 
     private void loardNextSectionId(){
         try{
-            String id = sectionModel.generateNextId();
+            String id = sectionBO.generateNextId();
             lblSectionId.setText(id);
         }catch (ClassNotFoundException e1){
             System.out.println("ClassNotFoundException");
