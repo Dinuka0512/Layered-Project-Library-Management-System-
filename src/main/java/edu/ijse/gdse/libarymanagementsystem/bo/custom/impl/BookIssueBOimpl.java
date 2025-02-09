@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class BookIssueBOimpl implements BookIssueBO {
 
     private BookIssueDAO bookIssueDAO = (BookIssueDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOType.BOOKISSUE);
+
     @Override
     public ArrayList<BookIdAndQty> getPopularBooks() throws SQLException, ClassNotFoundException {
         ArrayList<edu.ijse.gdse.libarymanagementsystem.entity.BookIdAndQty> bookIdAndQtyArrayList =  bookIssueDAO.getPopularBooks();
@@ -32,6 +33,7 @@ public class BookIssueBOimpl implements BookIssueBO {
         return dtos;
     }
 
+    //TRANSACTION
     @Override
     public boolean issueNow(IssueTableDto dto, ArrayList<TempBookIssueTm> tempDetails) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getInstance().getConnection();
