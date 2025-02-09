@@ -159,7 +159,7 @@ public class BookBOimpl implements BookBO {
     @Override
     public BookDto getBookDetails(String bookId) throws ClassNotFoundException, SQLException {
         Book book =  bookDAO.getBookDetails(bookId);
-        return new BookDto(book.getBookId(),book.getName(), book.getQty(),book.getPrice(),book.getBookShelfId());
+        return (book != null)? new BookDto(book.getBookId(),book.getName(), book.getQty(),book.getPrice(),book.getBookShelfId()) : null;
     }
 
     //HERE GET THE ALL BOOKS DETAILS

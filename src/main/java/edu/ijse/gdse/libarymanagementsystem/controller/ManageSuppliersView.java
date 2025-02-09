@@ -2,11 +2,11 @@ package edu.ijse.gdse.libarymanagementsystem.controller;
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.SupplierBO;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.SupplierDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.SupplierTm;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.TempBookTM;
-import edu.ijse.gdse.libarymanagementsystem.model.ManageSupplierModel;
 import edu.ijse.gdse.libarymanagementsystem.model.SupplierModel;
 import edu.ijse.gdse.libarymanagementsystem.util.Validation;
 import javafx.collections.FXCollections;
@@ -106,10 +106,14 @@ public class ManageSuppliersView implements Initializable {
     private TableView<SupplierTm> tableSupplier;
     private ArrayList<TempBookTM> tempBookTMSArrayList = new ArrayList<>();
     private final SupplierModel supplierModel = new SupplierModel();
-    private final ManageSupplierModel manageSupplierModel = new ManageSupplierModel();
 
     //========
+
+    private SupplierBO supplierBO = (SupplierBO) BOFactory.getInstance().getBO(BOFactory.BOType.SUPPLIER);
     private BookBO bookBO = (BookBO) BOFactory.getInstance().getBO(BOFactory.BOType.BOOK);
+
+    //========
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //HERE INITIALIZE THE TABLE COLUMNS
@@ -244,6 +248,7 @@ public class ManageSuppliersView implements Initializable {
 
     @FXML
     void resetthePage(ActionEvent event) {
+        pageLoad();
         resetPage();
     }
 
@@ -277,7 +282,7 @@ public class ManageSuppliersView implements Initializable {
     private void getSupplierBooks(){
         //WHEN ClICK THE SUPPLIER TABLE COLUMN THERE LORD THE SUPPLIER SUPPLYING BOOKS ON TO THE TEMP TABLE
         try{
-            ArrayList<BookDto> dtos = manageSupplierModel.getAllBooks(lblSupplierId.getText());
+            ArrayList<BookDto> dtos = supplierBO.getAllBooks(lblSupplierId.getText());
             ObservableList<TempBookTM> observableList = FXCollections.observableArrayList();
             for(BookDto dto : dtos){
                 Button btn = new Button("Remove");
@@ -546,7 +551,7 @@ public class ManageSuppliersView implements Initializable {
                     txtEmail.getText()
             );
 
-            boolean isSaved = manageSupplierModel.save(dto,tempBookTMSArrayList);
+            boolean isSaved = supplierBO.save(dto,tempBookTMSArrayList);
             if(isSaved){
                 resetPage();
                 loadTable();
@@ -574,7 +579,7 @@ public class ManageSuppliersView implements Initializable {
                     txtEmail.getText()
             );
 
-            boolean isUpdate = manageSupplierModel.updateSupplier(dto, tempBookTMSArrayList);
+            boolean isUpdate = supplierBO.updateSupplier(dto, tempBookTMSArrayList);
             if(isUpdate){
                 pageLoad();
                 clearTempTable();

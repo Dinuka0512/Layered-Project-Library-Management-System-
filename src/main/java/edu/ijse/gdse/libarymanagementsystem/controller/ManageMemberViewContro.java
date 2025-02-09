@@ -1,5 +1,5 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
-
+//---->>> FINISHED
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.MemberBO;
 import edu.ijse.gdse.libarymanagementsystem.db.DBConnection;
@@ -34,8 +34,6 @@ public class ManageMemberViewContro implements Initializable {
     private Button btnGetMemDetails;
     @FXML
     private Button btnGetAllReports;
-
-
 
     @FXML
     private Button btnDelete;

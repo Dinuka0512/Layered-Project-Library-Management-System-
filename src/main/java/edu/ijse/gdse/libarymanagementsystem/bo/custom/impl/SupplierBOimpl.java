@@ -1,39 +1,41 @@
-package edu.ijse.gdse.libarymanagementsystem.model;
+package edu.ijse.gdse.libarymanagementsystem.bo.custom.impl;
 
+import edu.ijse.gdse.libarymanagementsystem.bo.custom.SupplierBO;
+import edu.ijse.gdse.libarymanagementsystem.dao.DAOFactory;
+import edu.ijse.gdse.libarymanagementsystem.dao.custom.SupplierDAO;
 import edu.ijse.gdse.libarymanagementsystem.db.DBConnection;
 import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.SupplierDto;
-import edu.ijse.gdse.libarymanagementsystem.dto.tm.TempBookIssueTm;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.TempBookTM;
+import edu.ijse.gdse.libarymanagementsystem.entity.Book;
 import edu.ijse.gdse.libarymanagementsystem.util.CrudUtil;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 
-public class ManageSupplierModel {
+public class SupplierBOimpl implements SupplierBO {
+    private SupplierDAO supplierDAO = (SupplierDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOType.SUPPLIER);
+    @Override
     public ArrayList<BookDto> getAllBooks(String supplierId) throws SQLException, ClassNotFoundException {
-        String sql = "select b.Book_Id , b.name, b.qty, b.price, b.bookshelf_Id from Supplier s Join Book_Supply bs on s.Supplier_Id = bs.Supplier_Id Join Book b on b.Book_Id = bs.Book_Id where s.Supplier_Id = ?";
-        ResultSet res = CrudUtil.execute(sql,supplierId);
+        ArrayList<Book> books = supplierDAO.getAllBooks(supplierId);
         ArrayList<BookDto> dtos = new ArrayList<>();
-        while(res.next()){
-            BookDto dto = new BookDto(
-                    res.getString("Book_Id"),
-                    res.getString("name"),
-                    res.getInt("qty"),
-                    res.getDouble("price"),
-                    res.getString("bookshelf_Id")
+        for(Book book : books){
+            BookDto bookDto = new BookDto(
+                    book.getBookId(),
+                    book.getName(),
+                    book.getQty(),
+                    book.getPrice(),
+                    book.getBookShelfId()
             );
 
-            dtos.add(dto);
+            dtos.add(bookDto);
         }
 
         return dtos;
     }
-
-    public boolean save(SupplierDto dto, ArrayList<TempBookTM> arr) throws SQLException, ClassNotFoundException{
+    @Override
+    public boolean save(SupplierDto dto, ArrayList<TempBookTM> arr) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getInstance().getConnection();
         try {
             con.setAutoCommit(false);
@@ -90,9 +92,8 @@ public class ManageSupplierModel {
             con.setAutoCommit(true);
         }
     }
-
-
-    public boolean updateSupplier(SupplierDto dto, ArrayList<TempBookTM> arr) throws SQLException , ClassNotFoundException{
+    @Override
+    public boolean updateSupplier(SupplierDto dto, ArrayList<TempBookTM> arr) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getInstance().getConnection();
         try{
             con.setAutoCommit(false);
@@ -163,4 +164,5 @@ public class ManageSupplierModel {
         }
         return false;
     }
+
 }
