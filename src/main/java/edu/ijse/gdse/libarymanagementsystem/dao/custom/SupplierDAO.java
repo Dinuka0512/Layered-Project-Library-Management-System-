@@ -9,5 +9,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface SupplierDAO extends CrudDAO<Supplier>, SuperDAO {
+    boolean isEmailUniqueToUpdate(String supplierId, String email) throws SQLException, ClassNotFoundException;
     ArrayList<Book> getAllBooks(String supplierId) throws SQLException, ClassNotFoundException;
 }

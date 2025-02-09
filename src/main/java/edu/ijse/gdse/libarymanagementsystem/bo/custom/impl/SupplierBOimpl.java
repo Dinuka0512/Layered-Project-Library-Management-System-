@@ -8,6 +8,7 @@ import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.SupplierDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.TempBookTM;
 import edu.ijse.gdse.libarymanagementsystem.entity.Book;
+import edu.ijse.gdse.libarymanagementsystem.entity.Supplier;
 import edu.ijse.gdse.libarymanagementsystem.util.CrudUtil;
 
 import java.sql.Connection;
@@ -16,6 +17,45 @@ import java.util.ArrayList;
 
 public class SupplierBOimpl implements SupplierBO {
     private SupplierDAO supplierDAO = (SupplierDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOType.SUPPLIER);
+
+    @Override
+    public boolean isEmailUniqueToUpdate(String supplierId, String email) throws SQLException, ClassNotFoundException {
+        return supplierDAO.isEmailUniqueToUpdate(supplierId,email);
+    }
+
+    @Override
+    public boolean deleteSupplier(String supId) throws SQLException, ClassNotFoundException {
+        return supplierDAO.delete(supId);
+    }
+    @Override
+    public ArrayList<SupplierDto> getAllSuppliers() throws ClassNotFoundException, SQLException {
+        ArrayList<Supplier> suppliers = supplierDAO.getAll();
+        ArrayList<SupplierDto> dtos = new ArrayList<>();
+        for(Supplier supplier : suppliers){
+            SupplierDto dto = new SupplierDto(
+                    supplier.getSupplierId(),
+                    supplier.getName(),
+                    supplier.getContact(),
+                    supplier.getAddress(),
+                    supplier.getEmail()
+            );
+
+            dtos.add(dto);
+        }
+
+        return dtos;
+    }
+
+    @Override
+    public boolean isEmailUnique(String email) throws SQLException, ClassNotFoundException {
+        return supplierDAO.exist(email);
+    }
+
+    @Override
+    public String loardNextSupplierId() throws SQLException, ClassNotFoundException {
+        return supplierDAO.generateNewId();
+    }
+
     @Override
     public ArrayList<BookDto> getAllBooks(String supplierId) throws SQLException, ClassNotFoundException {
         ArrayList<Book> books = supplierDAO.getAllBooks(supplierId);

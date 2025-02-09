@@ -1,4 +1,5 @@
 package edu.ijse.gdse.libarymanagementsystem.controller;
+//--->>FINISHED
 
 import edu.ijse.gdse.libarymanagementsystem.bo.BOFactory;
 import edu.ijse.gdse.libarymanagementsystem.bo.custom.BookBO;
@@ -7,7 +8,6 @@ import edu.ijse.gdse.libarymanagementsystem.dto.BookDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.SupplierDto;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.SupplierTm;
 import edu.ijse.gdse.libarymanagementsystem.dto.tm.TempBookTM;
-import edu.ijse.gdse.libarymanagementsystem.model.SupplierModel;
 import edu.ijse.gdse.libarymanagementsystem.util.Validation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -105,7 +105,6 @@ public class ManageSuppliersView implements Initializable {
     @FXML
     private TableView<SupplierTm> tableSupplier;
     private ArrayList<TempBookTM> tempBookTMSArrayList = new ArrayList<>();
-    private final SupplierModel supplierModel = new SupplierModel();
 
     //========
 
@@ -148,7 +147,7 @@ public class ManageSuppliersView implements Initializable {
     private void loadTable(){
         //HERE LOAD THE TABLE
         try{
-            ArrayList<SupplierDto> dtos = supplierModel.getAllSuppliers();
+            ArrayList<SupplierDto> dtos = supplierBO.getAllSuppliers();
             ObservableList<SupplierTm> supplierTms = FXCollections.observableArrayList();
             for (SupplierDto dto : dtos){
                 SupplierTm supplierDto = new SupplierTm(
@@ -215,7 +214,7 @@ public class ManageSuppliersView implements Initializable {
     private void loardNextSupplierIds(){
         //HERE LOAD THE NEXT SUPPLIER IDS
         try{
-            String newId = supplierModel.loardNextSupplierId();
+            String newId = supplierBO.loardNextSupplierId();
             lblSupplierId.setText(newId);
         }catch (ClassNotFoundException e1){
             System.out.println("Class Not Found Exception");
@@ -441,7 +440,7 @@ public class ManageSuppliersView implements Initializable {
             Optional<ButtonType> optionalButtonType = alert.showAndWait();
 
             if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
-                boolean isDeleted = supplierModel.deleteSupplier(lblSupplierId.getText());
+                boolean isDeleted = supplierBO.deleteSupplier(lblSupplierId.getText());
                 if(isDeleted){
                     new Alert(Alert.AlertType.CONFIRMATION,"Deleted!..").show();
                     pageRefresh();
@@ -513,7 +512,7 @@ public class ManageSuppliersView implements Initializable {
 
     private boolean isEmailIsUnique(){
         try{
-            boolean isEmailUnique = supplierModel.isEmailUnique(txtEmail.getText());
+            boolean isEmailUnique = supplierBO.isEmailUnique(txtEmail.getText());
             if(isEmailUnique){
                 //true - Unique
                 return true;
@@ -532,12 +531,15 @@ public class ManageSuppliersView implements Initializable {
 
 
     private boolean isEmailUniqueOrSame(){
-        boolean isEmailReadyToUpdate = supplierModel.isEmailUniqueToUpdate(lblSupplierId.getText(), txtEmail.getText());
-        if(isEmailReadyToUpdate){
-            return true;
-        }else{
-            return false;
+        try{
+            boolean isEmailReadyToUpdate = supplierBO.isEmailUniqueToUpdate(lblSupplierId.getText(), txtEmail.getText());
+            if(isEmailReadyToUpdate){
+                return true;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
+        return false;
     }
 
     private void save() {
